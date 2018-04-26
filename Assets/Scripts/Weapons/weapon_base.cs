@@ -17,6 +17,12 @@ public class weapon_base : MonoBehaviour {
 
     public Projectile ProjectileType;
     public Mesh WeaponMesh;
+    public GameObject WeaponObject;
+
+    float Swayer1 = 20;
+    float Swayer2 = 0;
+    float Swayer3 = 0;
+
 
     float FireTime;
     float FireDelay;
@@ -98,5 +104,12 @@ public class weapon_base : MonoBehaviour {
         {
             Reload();
         }
-	}
+
+        Swayer1 -= Swayer3 * 25 * Time.deltaTime;
+        Swayer2 += (Input.GetAxis("Mouse X") - Swayer2) * 2f * Time.deltaTime;
+        Swayer3 += (Swayer1 > 0 ? 5 : -5) * Time.deltaTime + Input.GetAxis("Mouse X") * 0.05f;
+        Swayer1 *= 0.99f;
+
+        WeaponObject.transform.localRotation = Quaternion.Euler(0, Swayer1 * Swayer2, Swayer1 * Swayer2);
+    }
 }
