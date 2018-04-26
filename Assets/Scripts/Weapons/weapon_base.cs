@@ -14,15 +14,18 @@ public class weapon_base : MonoBehaviour {
     public int ReserveAmmo = 90;
     public float ReloadTime = 2f;
     public int AmmoAmount = 0;
+    public float Weight = 25f;
 
     public Projectile ProjectileType;
     public Mesh WeaponMesh;
     public GameObject WeaponObject;
 
-    float Swayer1 = 20;
-    float Swayer2 = 0;
-    float Swayer3 = 0;
+    Vector2 SwayDirSmooth = Vector2.zero;
+    Vector2 SwayVector = Vector2.zero;
+    Vector2 SwayVectorAccel = Vector2.zero;
+    Vector2 SwayStep = Vector2.zero;
 
+    character_movement charmove;
 
     float FireTime;
     float FireDelay;
@@ -32,6 +35,8 @@ public class weapon_base : MonoBehaviour {
     void Start () {
         FireDelay = 1f / (FireRate / 60);
         AmmoAmount = AmmoCapacity;
+
+        charmove = transform.GetComponent<character_movement>();
     }
 
     void Reset ()
@@ -105,11 +110,23 @@ public class weapon_base : MonoBehaviour {
             Reload();
         }
 
-        Swayer1 -= Swayer3 * 25 * Time.deltaTime;
-        Swayer2 += (Input.GetAxis("Mouse X") - Swayer2) * 2f * Time.deltaTime;
-        Swayer3 += (Swayer1 > 0 ? 5 : -5) * Time.deltaTime + Input.GetAxis("Mouse X") * 0.05f;
-        Swayer1 *= 0.99f;
+        Vector2 swayDir = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        swayDir = swayDir.normalized * swayDir.magnitude;
+        SwayDirSmooth = Vector2.Lerp(SwayDirSmooth, swayDir, 0.5f);
+        SwayVector += SwayDirSmooth;
+        SwayVector -= SwayVector * (4.015848f + (21.87705f - 4.015848f) / (1 + Mathf.Pow((Weight / 4.206759f), 1.480224f))) * Time.deltaTime;
+     
+        SwayVectorAccel += new Vector2(SwayVector.x > 0 ? -0.25f : 0.25f, SwayVector.y > 0 ? -0.25f : 0.25f) * Time.deltaTime;
+        SwayVector += SwayVectorAccel * 200 * Time.deltaTime;
 
-        WeaponObject.transform.localRotation = Quaternion.Euler(0, Swayer1 * Swayer2, Swayer1 * Swayer2);
+        Vector2 SwayVectorWeighted = SwayVector * ( Weight >= 5 ? 1 : -1);
+
+        SwayStep.x += charmove.velocity.x * 2f * Time.deltaTime;
+        SwayStep.y += charmove.velocity.z * 2f * Time.deltaTime;
+
+        SwayVector.x += Mathf.Cos(SwayStep.x);
+        SwayVector.x += Mathf.Cos(SwayStep.y);
+
+        WeaponObject.transform.localRotation = Quaternion.Euler(SwayVectorWeighted.y, -SwayVectorWeighted.x, SwayVectorWeighted.x);
     }
 }
