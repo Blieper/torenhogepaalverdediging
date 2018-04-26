@@ -113,6 +113,10 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &185231036 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 340c965f279c5734f9b4bca16d59fb64, type: 3}
+  m_PrefabInternal: {fileID: 1541704444}
 --- !u!1 &193367939
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,9 +470,10 @@ MonoBehaviour:
   cam: {fileID: 1208473921}
   controller: {fileID: 0}
   WalkSpeed: 5
-  Accelaration: 100
+  Accelaration: 15
   Deccelaration: 25
   JumpHeight: 2
+  moveVector: {x: 0, y: 0, z: 0}
   accelarationVector: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!143 &1787501379
@@ -574,9 +579,10 @@ MonoBehaviour:
   ReserveAmmo: 90
   ReloadTime: 2
   AmmoAmount: 0
+  Weight: 6
   ProjectileType: {fileID: 0}
   WeaponMesh: {fileID: 0}
-  WeaponObject: {fileID: 581486487}
+  WeaponObject: {fileID: 185231036}
 --- !u!114 &1787501385
 MonoBehaviour:
   m_ObjectHideFlags: 0

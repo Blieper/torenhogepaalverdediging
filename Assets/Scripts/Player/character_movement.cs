@@ -13,8 +13,9 @@ public class character_movement : MonoBehaviour {
     public float JumpHeight = 2.0f;
 
     float LookAngle;
+    float LeanAngle;
     float JumpSpeed;
-    Vector3 moveVector = Vector3.zero;
+    public Vector3 moveVector = Vector3.zero;
     public Vector3 accelarationVector = Vector3.zero;
     public Vector3 velocity = Vector3.zero;
 
@@ -36,6 +37,8 @@ public class character_movement : MonoBehaviour {
     }
 
 	void Start () {
+        Cursor.lockState = CursorLockMode.Locked;
+
         JumpSpeed = Mathf.Sqrt(2 * -Physics.gravity.y * JumpHeight);
 
         controller = transform.GetComponent<CharacterController>();
@@ -64,6 +67,8 @@ public class character_movement : MonoBehaviour {
 
         LookAngle = Mathf.Clamp(LookAngle,-90,90);
 
-        cam.transform.localRotation = Quaternion.Euler(LookAngle, 0,0);
+        LeanAngle += (-velocity.x/WalkSpeed - LeanAngle) * 4f * Time.deltaTime;
+
+        cam.transform.localRotation = Quaternion.Euler(LookAngle, 0, LeanAngle);
     }
 }
