@@ -15,10 +15,12 @@ public class weapon_base : MonoBehaviour {
     public float ReloadTime = 2f;
     public int AmmoAmount = 0;
     public float Weight = 25f;
+    public float Recoil = 2f;
 
-    public Projectile ProjectileType;
+    public GameObject ProjectileType;
     public Mesh WeaponMesh;
     public GameObject WeaponObject;
+    public GameObject CameraObject;
 
     Vector2 SwayDirSmooth = Vector2.zero;
     Vector2 SwayVector = Vector2.zero;
@@ -66,7 +68,10 @@ public class weapon_base : MonoBehaviour {
         if (AmmoAmount > 0)
         {
             AmmoAmount--;
-            print("Test");
+            SwayVector.y += Recoil;
+
+            GameObject projectile = Instantiate(ProjectileType, CameraObject.transform.position, CameraObject.transform.rotation);
+            Physics.IgnoreCollision(projectile.GetComponent<Collider>(), GetComponent<Collider>());
         }
 
         CheckBurst();
