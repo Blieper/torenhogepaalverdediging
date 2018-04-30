@@ -129,8 +129,14 @@ public class weapon_base : MonoBehaviour {
         SwayStep.x += charmove.velocity.x * 2f * Time.deltaTime;
         SwayStep.y += charmove.velocity.z * 2f * Time.deltaTime;
 
-        SwayVector.x += Mathf.Cos(SwayStep.x);
-        SwayVector.x += Mathf.Cos(SwayStep.y);
+        SwayVector.x += Mathf.Cos(SwayStep.magnitude);
+        SwayVector.y += Mathf.Cos(SwayStep.magnitude * 2);
+
+        SwayVector = SwayVector.normalized * Mathf.Clamp(SwayVector.magnitude, 0, 10);
+
+        SwayVectorWeighted.x = Mathf.Clamp(SwayVectorWeighted.x, -10, 10);
+        SwayVectorWeighted.y = Mathf.Clamp(SwayVectorWeighted.y, -10, 10);
+
 
         WeaponObject.transform.localRotation = Quaternion.Euler(SwayVectorWeighted.y, -SwayVectorWeighted.x, SwayVectorWeighted.x);
     }
