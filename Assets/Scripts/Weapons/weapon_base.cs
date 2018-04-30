@@ -10,17 +10,16 @@ public class weapon_base : MonoBehaviour {
     // 0 = fully auto, 1 = semi auto, 2 = 2 round burst etc
     public int Burst = 0;
     public bool CompleteBurst = false;
-    public int AmmoCapacity = 30;
-    public int ReserveAmmo = 90;
     public float ReloadTime = 2f;
-    public int AmmoAmount = 0;
     public float Weight = 25f;
     public float Recoil = 2f;
 
     public GameObject ProjectileType;
-    public Mesh WeaponMesh;
+    public GameObject WeaponParent;
     public GameObject WeaponObject;
     public GameObject CameraObject;
+
+    public int SelectedWeaponID = 0;
 
     Vector2 SwayDirSmooth = Vector2.zero;
     Vector2 SwayVector = Vector2.zero;
@@ -30,15 +29,15 @@ public class weapon_base : MonoBehaviour {
     character_movement charmove;
 
     float FireTime;
-    float FireDelay;
+    public float FireDelay;
     int FiredBurst;
     bool IsFiring = false;
 
     void Start () {
         FireDelay = 1f / (FireRate / 60);
-        AmmoAmount = AmmoCapacity;
-
         charmove = transform.GetComponent<character_movement>();
+
+        SetWeapon(0);
     }
 
     void Reset ()
@@ -65,13 +64,15 @@ public class weapon_base : MonoBehaviour {
             return;
         }
 
-        if (AmmoAmount > 0)
+        if (WeaponObject.GetComponent<Weapon_Object>().AmmoAmount > 0)
         {
-            AmmoAmount--;
+            WeaponObject.GetComponent<Weapon_Object>().AmmoAmount--;
             SwayVector.y += Recoil;
 
             GameObject projectile = Instantiate(ProjectileType, CameraObject.transform.position, CameraObject.transform.rotation);
-            Physics.IgnoreCollision(projectile.GetComponent<Collider>(), GetComponent<Collider>());
+            Physics.IgnoreCollision(projectile.transform.GetComponent<Collider>(), transform.GetComponent<CharacterController>(), true);
+
+            print("fire");
         }
 
         CheckBurst();
@@ -79,7 +80,8 @@ public class weapon_base : MonoBehaviour {
 
     void Reload ()
     {
-        if (AmmoAmount < AmmoCapacity && ReserveAmmo > 0) {
+        if (WeaponObject.GetComponent<Weapon_Object>().AmmoAmount < WeaponObject.GetComponent<Weapon_Object>().AmmoCapacity 
+            && WeaponObject.GetComponent<Weapon_Object>().ReserveAmmo > 0) {
             Invoke("AfterReload", ReloadTime);
         }
     }
@@ -87,9 +89,9 @@ public class weapon_base : MonoBehaviour {
     void AfterReload ()
     {
         Reset();
-        int ammoChange = AmmoCapacity - AmmoAmount;
-        ReserveAmmo -= ammoChange;
-        AmmoAmount += ammoChange;
+        int ammoChange = WeaponObject.GetComponent<Weapon_Object>().AmmoCapacity - WeaponObject.GetComponent<Weapon_Object>().AmmoAmount;
+        WeaponObject.GetComponent<Weapon_Object>().ReserveAmmo -= ammoChange;
+        WeaponObject.GetComponent<Weapon_Object>().AmmoAmount += ammoChange;
     }
 	
 	void Update () {
@@ -99,7 +101,7 @@ public class weapon_base : MonoBehaviour {
             Fire();
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && Time.time > FireTime)
         {
             Fire();
             IsFiring = true;
@@ -137,7 +139,51 @@ public class weapon_base : MonoBehaviour {
         SwayVectorWeighted.x = Mathf.Clamp(SwayVectorWeighted.x, -10, 10);
         SwayVectorWeighted.y = Mathf.Clamp(SwayVectorWeighted.y, -10, 10);
 
-
         WeaponObject.transform.localRotation = Quaternion.Euler(SwayVectorWeighted.y, -SwayVectorWeighted.x, SwayVectorWeighted.x);
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            SelectedWeaponID++;
+
+            if (SelectedWeaponID >= WeaponParent.transform.childCount)
+            {
+                SelectedWeaponID = 0;
+            }
+
+            SetWeapon(SelectedWeaponID);
+            print(SelectedWeaponID);
+        } else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            SelectedWeaponID--;
+
+            if (SelectedWeaponID <= 0)
+            {
+                SelectedWeaponID = WeaponParent.transform.childCount - 1;
+            }
+
+            SetWeapon(SelectedWeaponID);
+            print(SelectedWeaponID);
+        }
+    }
+
+    void SetWeapon (int ID)
+    {
+        int i = 0;
+        foreach (Transform Weapon in WeaponParent.transform)
+        {
+            if (i == ID)
+            {
+                Weapon.GetComponent<Weapon_Object>().Activate();
+                WeaponObject = Weapon.gameObject;
+            }
+            else
+            {
+                Weapon.GetComponent<Weapon_Object>().Deactivate();
+            }
+
+            i++;
+        }
+
+        Reset();
     }
 }
