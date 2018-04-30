@@ -7,6 +7,7 @@ public class character_movement : MonoBehaviour {
     public Camera cam;
     public CharacterController controller;
 
+    public float SprintSpeed = 5.0f;
     public float WalkSpeed = 3.0f;
     public float Accelaration = 2.0f;
     public float Deccelaration = 2.0f;
@@ -19,11 +20,11 @@ public class character_movement : MonoBehaviour {
     public Vector3 accelarationVector = Vector3.zero;
     public Vector3 velocity = Vector3.zero;
 
-    float GetAccelaration (float Input, float Compare)
+    float GetAccelaration (float In, float Compare)
     {
-        if (Mathf.Abs(Input) > 0){
+        if (Mathf.Abs(In) > 0){
             return Mathf.Clamp(
-                (Mathf.Sign(Input) * WalkSpeed - Compare) * Accelaration,
+                (Mathf.Sign(In) * (Input.GetButton("Sprint") ? SprintSpeed : WalkSpeed) - Compare) * Accelaration,
                 -Accelaration,
                 Accelaration
             );

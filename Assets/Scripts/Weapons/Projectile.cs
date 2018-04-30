@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rb = transform.GetComponent<Rigidbody>();
+        Invoke("AutoDestroy",5f);
 
         Fire();
     }
@@ -22,4 +23,9 @@ public class Projectile : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void AutoDestroy ()
+    {
+        Destroy(gameObject);
+    }
 }
