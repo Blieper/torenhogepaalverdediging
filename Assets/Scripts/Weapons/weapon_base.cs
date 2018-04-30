@@ -24,7 +24,9 @@ public class weapon_base : MonoBehaviour {
     Vector2 SwayDirSmooth = Vector2.zero;
     Vector2 SwayVector = Vector2.zero;
     Vector2 SwayVectorAccel = Vector2.zero;
-    Vector2 SwayStep = Vector2.zero;
+    Vector2 SwayVectorAccelDir = Vector2.zero;
+    Vector2 SwayVectorAccelDirSmooth = Vector2.zero;
+    float SwayStep;
 
     character_movement charmove;
 
@@ -67,12 +69,10 @@ public class weapon_base : MonoBehaviour {
         if (WeaponObject.GetComponent<Weapon_Object>().AmmoAmount > 0)
         {
             WeaponObject.GetComponent<Weapon_Object>().AmmoAmount--;
-            SwayVector.y += Recoil;
+            SwayVector.y -= Recoil * (Weight >= 5 ? 1 : -1);
 
             GameObject projectile = Instantiate(ProjectileType, CameraObject.transform.position, CameraObject.transform.rotation);
             Physics.IgnoreCollision(projectile.transform.GetComponent<Collider>(), transform.GetComponent<CharacterController>(), true);
-
-            print("fire");
         }
 
         CheckBurst();
@@ -119,20 +119,25 @@ public class weapon_base : MonoBehaviour {
 
         Vector2 swayDir = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         swayDir = swayDir.normalized * swayDir.magnitude;
-        SwayDirSmooth = Vector2.Lerp(SwayDirSmooth, swayDir, 0.5f);
+        SwayDirSmooth = Vector2.Lerp(SwayDirSmooth, swayDir, 15f * Time.deltaTime);
         SwayVector += SwayDirSmooth;
         SwayVector -= SwayVector * (4.015848f + (21.87705f - 4.015848f) / (1 + Mathf.Pow((Weight / 4.206759f), 1.480224f))) * Time.deltaTime;
-     
-        SwayVectorAccel += new Vector2(SwayVector.x > 0 ? -0.25f : 0.25f, SwayVector.y > 0 ? -0.25f : 0.25f) * Time.deltaTime;
+
+        SwayVectorAccelDir = new Vector2(SwayVector.x > 0 ? -0.25f : 0.25f, SwayVector.y > 0 ? -0.25f : 0.25f);
+        SwayVectorAccelDirSmooth = Vector2.Lerp(SwayVectorAccelDirSmooth, SwayVectorAccelDir, 5f * Time.deltaTime);
+
+        SwayVectorAccel += SwayVectorAccelDirSmooth * Time.deltaTime;
         SwayVector += SwayVectorAccel * 200 * Time.deltaTime;
 
         Vector2 SwayVectorWeighted = SwayVector * ( Weight >= 5 ? 1 : -1);
 
-        SwayStep.x += charmove.velocity.x * 2f * Time.deltaTime;
-        SwayStep.y += charmove.velocity.z * 2f * Time.deltaTime;
+        SwayStep += new Vector3(charmove.velocity.x, 0, charmove.velocity.z).magnitude * Time.deltaTime * 2f;
 
-        SwayVector.x += Mathf.Cos(SwayStep.magnitude);
-        SwayVector.y += Mathf.Cos(SwayStep.magnitude * 2);
+        SwayVector.x += Mathf.Cos(SwayStep) * Time.deltaTime * 25f;
+        SwayVector.y += Mathf.Cos(SwayStep * 2) * Time.deltaTime * 25f;
+
+        //SwayVector.x += (Mathf.PerlinNoise(Time.time * 0.5f, 0) - 0.5f) * 2f;
+        //SwayVector.y += (Mathf.PerlinNoise(Time.time * 0.5f, 10) - 0.5f) * 2f;
 
         SwayVector = SwayVector.normalized * Mathf.Clamp(SwayVector.magnitude, 0, 10);
 

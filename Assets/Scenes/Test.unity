@@ -646,6 +646,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &786105120 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4661273222798408, guid: 1ff96ea214403964aaf9df66e517c441,
+    type: 2}
+  m_PrefabInternal: {fileID: 1563342434}
 --- !u!1001 &1563342434
 Prefab:
   m_ObjectHideFlags: 0
@@ -843,6 +848,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1974767795
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 786105120}
+    m_Modifications:
+    - target: {fileID: 400004, guid: f74b45622e1f19d40a5807de2d2ee1dd, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: f74b45622e1f19d40a5807de2d2ee1dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: f74b45622e1f19d40a5807de2d2ee1dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f74b45622e1f19d40a5807de2d2ee1dd, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1 &1974767796 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: f74b45622e1f19d40a5807de2d2ee1dd, type: 3}
+  m_PrefabInternal: {fileID: 1974767795}
+--- !u!114 &1974767797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1974767796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aebae3fdb0c4cc4d8678befa80fe80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireRate: 800
+  Burst: 0
+  CompleteBurst: 0
+  AmmoCapacity: 35
+  ReserveAmmo: 105
+  ReloadTime: 2
+  AmmoAmount: 0
+  Weight: 25
+  Recoil: 2
+  Offset: {x: 0, y: 0, z: 0}
+  ProjectileType: {fileID: 0}
+  Owner: {fileID: 0}
+  WeaponBase: {fileID: 0}
 --- !u!1 &2105842209
 GameObject:
   m_ObjectHideFlags: 0

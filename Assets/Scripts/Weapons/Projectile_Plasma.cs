@@ -21,10 +21,8 @@ public class Projectile_Plasma : Projectile
         {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
 
-            print(rb);
-
             if (rb != null)
-                rb.AddExplosionForce(ExplosionPower, explosionPos, ExplosionRadius, 3F);
+                rb.AddExplosionForce(ExplosionPower, explosionPos, ExplosionRadius, 0);
         }
 
         Destroy(gameObject);
@@ -32,7 +30,6 @@ public class Projectile_Plasma : Projectile
 
     void OnCollisionEnter(Collision collision)
     {
-        print(collision);
         Explode();
     }
 }

@@ -208,7 +208,7 @@ MonoBehaviour:
   ReserveAmmo: 48
   ReloadTime: 2
   AmmoAmount: 0
-  Weight: 7
+  Weight: 6
   Recoil: 8
   Offset: {x: 0, y: 0, z: 0}
   ProjectileType: {fileID: 1925706596410724, guid: d5677a12155408e4492ecd0da42850c8,

@@ -22,10 +22,8 @@ public class Projectile_Bomb : Projectile {
         {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
 
-            print(rb);
-
             if (rb != null)
-                rb.AddExplosionForce(ExplosionPower, explosionPos, ExplosionRadius, 3F);
+                rb.AddExplosionForce(ExplosionPower, explosionPos, ExplosionRadius, 0);
         }
 
         Destroy(gameObject);

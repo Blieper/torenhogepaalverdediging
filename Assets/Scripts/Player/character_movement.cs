@@ -24,7 +24,7 @@ public class character_movement : MonoBehaviour {
     {
         if (Mathf.Abs(In) > 0){
             return Mathf.Clamp(
-                (Mathf.Sign(In) * (Input.GetButton("Sprint") ? SprintSpeed : WalkSpeed) - Compare) * Accelaration,
+                (In * (Input.GetButton("Sprint") ? SprintSpeed : WalkSpeed) - Compare) * Accelaration,
                 -Accelaration,
                 Accelaration
             );
