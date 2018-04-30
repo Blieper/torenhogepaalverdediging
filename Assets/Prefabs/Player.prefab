@@ -749,7 +749,7 @@ MonoBehaviour:
   Accelaration: 25
   Deccelaration: 25
   JumpHeight: 1.5
-  FallMultiplier: 2.5
+  FallMultiplier: 2
   moveVector: {x: 0, y: 0, z: 0}
   accelarationVector: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -768,7 +768,6 @@ MonoBehaviour:
   Burst: 0
   CompleteBurst: 0
   ReloadTime: 2
-  Weight: 4
   Recoil: 5
   ProjectileType: {fileID: 1925706596410724, guid: d5677a12155408e4492ecd0da42850c8,
     type: 2}
@@ -776,6 +775,7 @@ MonoBehaviour:
   WeaponObject: {fileID: 1127579456306188}
   CameraObject: {fileID: 1114681110794722}
   SelectedWeaponID: 0
+  Sway: {fileID: 0}
   FireDelay: 0
 --- !u!114 &114417547547936968
 MonoBehaviour:
@@ -788,6 +788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df38c2929bc2aec4f8a817a734710685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponObject: {fileID: 0}
+  SwayWeight: 0
 --- !u!114 &114528571216084430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -806,7 +808,7 @@ MonoBehaviour:
   ReserveAmmo: 48
   ReloadTime: 2
   AmmoAmount: 0
-  Weight: 7
+  SwayWeight: 6
   Recoil: 8
   Offset: {x: 0, y: 0, z: 0}
   ProjectileType: {fileID: 1925706596410724, guid: d5677a12155408e4492ecd0da42850c8,
@@ -831,7 +833,7 @@ MonoBehaviour:
   ReserveAmmo: 105
   ReloadTime: 1.5
   AmmoAmount: 0
-  Weight: 3
+  SwayWeight: 3
   Recoil: 3
   Offset: {x: 0, y: 0, z: 0}
   ProjectileType: {fileID: 1233044386128182, guid: a667f17a3914e234d942aedeef69ba1c,
@@ -856,7 +858,7 @@ MonoBehaviour:
   ReserveAmmo: 90
   ReloadTime: 2
   AmmoAmount: 0
-  Weight: 4
+  SwayWeight: 4
   Recoil: 2
   Offset: {x: 0, y: 0, z: 0}
   ProjectileType: {fileID: 1233044386128182, guid: a667f17a3914e234d942aedeef69ba1c,

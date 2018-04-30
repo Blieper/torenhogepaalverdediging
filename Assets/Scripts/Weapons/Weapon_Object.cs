@@ -14,7 +14,7 @@ public class Weapon_Object : MonoBehaviour {
     public int ReserveAmmo = 90;
     public float ReloadTime = 2f;
     public int AmmoAmount = 0;
-    public float Weight = 25f;
+    public float SwayWeight = 25f;
     public float Recoil = 2f;
 
     public Vector3 Offset = new Vector3(0, 0, 0);
@@ -43,10 +43,10 @@ public class Weapon_Object : MonoBehaviour {
         WeaponBase.Burst = Burst;
         WeaponBase.CompleteBurst = CompleteBurst;
         WeaponBase.ReloadTime = ReloadTime;
-        WeaponBase.Weight = Weight;
         WeaponBase.Recoil = Recoil;
         WeaponBase.ProjectileType = ProjectileType;
-        WeaponBase.FireDelay = 1f / (FireRate / 60); 
+        WeaponBase.FireDelay = 1f / (FireRate / 60);
+        WeaponBase.Sway.Weight = SwayWeight;
     }
 
     public void Deactivate()

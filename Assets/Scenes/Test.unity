@@ -585,14 +585,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114096423714259258, guid: 1ff96ea214403964aaf9df66e517c441,
+    - target: {fileID: 114883685542323750, guid: 1ff96ea214403964aaf9df66e517c441,
         type: 2}
-      propertyPath: FallMultiplier
-      value: 2
+      propertyPath: SwayWeight
+      value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 114417547547936968, guid: 1ff96ea214403964aaf9df66e517c441,
+        type: 2}
+      propertyPath: WeaponParent
+      value: 
+      objectReference: {fileID: 1710652153}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ff96ea214403964aaf9df66e517c441, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1710652153 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1127579456306188, guid: 1ff96ea214403964aaf9df66e517c441,
+    type: 2}
+  m_PrefabInternal: {fileID: 1563342434}
 --- !u!1 &1812706371
 GameObject:
   m_ObjectHideFlags: 0

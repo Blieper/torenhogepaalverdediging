@@ -11,7 +11,6 @@ public class weapon_base : MonoBehaviour {
     public int Burst = 0;
     public bool CompleteBurst = false;
     public float ReloadTime = 2f;
-    public float Weight = 25f;
     public float Recoil = 2f;
 
     public GameObject ProjectileType;
@@ -21,14 +20,8 @@ public class weapon_base : MonoBehaviour {
 
     public int SelectedWeaponID = 0;
 
-    Vector2 SwayDirSmooth = Vector2.zero;
-    Vector2 SwayVector = Vector2.zero;
-    Vector2 SwayVectorAccel = Vector2.zero;
-    Vector2 SwayVectorAccelDir = Vector2.zero;
-    Vector2 SwayVectorAccelDirSmooth = Vector2.zero;
-    float SwayStep;
-
     character_movement charmove;
+    public Weapon_Sway Sway;
 
     float FireTime;
     public float FireDelay;
@@ -38,6 +31,7 @@ public class weapon_base : MonoBehaviour {
     void Start () {
         FireDelay = 1f / (FireRate / 60);
         charmove = transform.GetComponent<character_movement>();
+        Sway = transform.GetComponent<Weapon_Sway>();
 
         SetWeapon(0);
     }
@@ -68,8 +62,9 @@ public class weapon_base : MonoBehaviour {
 
         if (WeaponObject.GetComponent<Weapon_Object>().AmmoAmount > 0)
         {
+            Sway.Impulse(new Vector2(Random.value * 2 - 1,Recoil));
+
             WeaponObject.GetComponent<Weapon_Object>().AmmoAmount--;
-            SwayVector.y -= Recoil * (Weight >= 5 ? 1 : -1);
 
             GameObject projectile = Instantiate(ProjectileType, CameraObject.transform.position, CameraObject.transform.rotation);
             Physics.IgnoreCollision(projectile.transform.GetComponent<Collider>(), transform.GetComponent<CharacterController>(), true);
@@ -117,35 +112,6 @@ public class weapon_base : MonoBehaviour {
             Reload();
         }
 
-        Vector2 swayDir = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        swayDir = swayDir.normalized * swayDir.magnitude;
-        SwayDirSmooth = Vector2.Lerp(SwayDirSmooth, swayDir, 15f * Time.deltaTime);
-        SwayVector += SwayDirSmooth;
-        SwayVector -= SwayVector * (4.015848f + (21.87705f - 4.015848f) / (1 + Mathf.Pow((Weight / 4.206759f), 1.480224f))) * Time.deltaTime;
-
-        SwayVectorAccelDir = new Vector2(SwayVector.x > 0 ? -0.25f : 0.25f, SwayVector.y > 0 ? -0.25f : 0.25f);
-        SwayVectorAccelDirSmooth = Vector2.Lerp(SwayVectorAccelDirSmooth, SwayVectorAccelDir, 5f * Time.deltaTime);
-
-        SwayVectorAccel += SwayVectorAccelDirSmooth * Time.deltaTime;
-        SwayVector += SwayVectorAccel * 200 * Time.deltaTime;
-
-        Vector2 SwayVectorWeighted = SwayVector * ( Weight >= 5 ? 1 : -1);
-
-        SwayStep += new Vector3(charmove.velocity.x, 0, charmove.velocity.z).magnitude * Time.deltaTime * 2f;
-
-        SwayVector.x += Mathf.Cos(SwayStep) * Time.deltaTime * 25f;
-        SwayVector.y += Mathf.Cos(SwayStep * 2) * Time.deltaTime * 25f;
-
-        SwayVector.x += (Mathf.PerlinNoise(Time.time * 0.5f, 0) - 0.5f) * 2f;
-        SwayVector.y += (Mathf.PerlinNoise(Time.time * 0.5f, 10) - 0.5f) * 2f;
-
-        SwayVector = SwayVector.normalized * Mathf.Clamp(SwayVector.magnitude, 0, 10);
-
-        SwayVectorWeighted.x = Mathf.Clamp(SwayVectorWeighted.x, -10, 10);
-        SwayVectorWeighted.y = Mathf.Clamp(SwayVectorWeighted.y, -10, 10);
-
-        WeaponObject.transform.localRotation = Quaternion.Euler(SwayVectorWeighted.y, -SwayVectorWeighted.x, SwayVectorWeighted.x);
-
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             SelectedWeaponID++;
@@ -180,6 +146,7 @@ public class weapon_base : MonoBehaviour {
             {
                 Weapon.GetComponent<Weapon_Object>().Activate();
                 WeaponObject = Weapon.gameObject;
+                Sway.WeaponObject = Weapon.gameObject;
             }
             else
             {
