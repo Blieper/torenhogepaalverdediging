@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4188964726047294}
-  - component: {fileID: 114837413913374878}
+  - component: {fileID: 114426128226854194}
   m_Layer: 0
   m_Name: Decimator
   m_TagString: Untagged
@@ -81,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1660066096475654}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.264, y: -0.348, z: 0.626}
+  m_LocalPosition: {x: 0.26399994, y: -0.348, z: 0.62599945}
   m_LocalScale: {x: 0.18758196, y: 0.18758196, z: 0.18758196}
   m_Children:
   - {fileID: 4469064606885804}
@@ -190,7 +190,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1659632396234286}
   m_Mesh: {fileID: 4300000, guid: c381bd8be88c8704db6afe3cea941c70, type: 3}
---- !u!114 &114837413913374878
+--- !u!114 &114426128226854194
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1660066096475654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29579fd047be1334895bc43c7a853e45, type: 3}
+  m_Script: {fileID: 11500000, guid: 3aebae3fdb0c4cc4d8678befa80fe80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FireRate: 500
@@ -208,7 +208,7 @@ MonoBehaviour:
   ReserveAmmo: 90
   ReloadTime: 2
   AmmoAmount: 0
-  Weight: 25
+  Weight: 4
   Recoil: 2
   Offset: {x: 0, y: 0, z: 0}
   ProjectileType: {fileID: 1925706596410724, guid: d5677a12155408e4492ecd0da42850c8,

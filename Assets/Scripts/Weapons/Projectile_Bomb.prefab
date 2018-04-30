@@ -112,6 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  ExplosionRadius: 5
+  ExplosionPower: 1000
+  ExplosionTime: 2
 --- !u!135 &135019273963757238
 SphereCollider:
   m_ObjectHideFlags: 1

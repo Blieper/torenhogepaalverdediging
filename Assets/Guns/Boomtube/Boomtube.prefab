@@ -201,16 +201,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aebae3fdb0c4cc4d8678befa80fe80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 500
-  Burst: 0
+  FireRate: 100
+  Burst: 1
   CompleteBurst: 0
-  AmmoCapacity: 30
-  ReserveAmmo: 90
+  AmmoCapacity: 8
+  ReserveAmmo: 48
   ReloadTime: 2
   AmmoAmount: 0
-  Weight: 25
-  Recoil: 2
+  Weight: 7
+  Recoil: 8
   Offset: {x: 0, y: 0, z: 0}
-  ProjectileType: {fileID: 0}
+  ProjectileType: {fileID: 1925706596410724, guid: d5677a12155408e4492ecd0da42850c8,
+    type: 2}
   Owner: {fileID: 0}
   WeaponBase: {fileID: 0}
