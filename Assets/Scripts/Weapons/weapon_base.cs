@@ -136,8 +136,8 @@ public class weapon_base : MonoBehaviour {
         SwayVector.x += Mathf.Cos(SwayStep) * Time.deltaTime * 25f;
         SwayVector.y += Mathf.Cos(SwayStep * 2) * Time.deltaTime * 25f;
 
-        //SwayVector.x += (Mathf.PerlinNoise(Time.time * 0.5f, 0) - 0.5f) * 2f;
-        //SwayVector.y += (Mathf.PerlinNoise(Time.time * 0.5f, 10) - 0.5f) * 2f;
+        SwayVector.x += (Mathf.PerlinNoise(Time.time * 0.5f, 0) - 0.5f) * 2f;
+        SwayVector.y += (Mathf.PerlinNoise(Time.time * 0.5f, 10) - 0.5f) * 2f;
 
         SwayVector = SwayVector.normalized * Mathf.Clamp(SwayVector.magnitude, 0, 10);
 

@@ -12,7 +12,9 @@ public class character_movement : MonoBehaviour {
     public float Accelaration = 2.0f;
     public float Deccelaration = 2.0f;
     public float JumpHeight = 2.0f;
+    public float FallMultiplier = 2.0f;
 
+    bool isJumping;
     float LookAngle;
     float LeanAngle;
     float JumpSpeed;
@@ -52,12 +54,20 @@ public class character_movement : MonoBehaviour {
         velocity.z += GetAccelaration(moveVector.z, velocity.z) * Time.deltaTime;
 
         if (controller.isGrounded) {
+            isJumping = false;
+
             if (Input.GetButtonDown("Jump"))
             {
                 velocity.y = JumpSpeed;
+                isJumping = true;
             }
         } else {
             velocity.y += Physics.gravity.y * Time.deltaTime;
+
+            if (controller.velocity.y < 0 && controller.velocity.y > -JumpSpeed)
+            {
+                velocity.y += Physics.gravity.y * (FallMultiplier - 1) * Time.deltaTime;
+            } 
         }
 
         controller.Move(controller.transform.TransformVector(velocity * Time.deltaTime));
