@@ -7,11 +7,14 @@ public class character_movement : MonoBehaviour {
     public Camera cam;
     public CharacterController controller;
 
+    public float SprintSpeed = 5.0f;
     public float WalkSpeed = 3.0f;
     public float Accelaration = 2.0f;
     public float Deccelaration = 2.0f;
     public float JumpHeight = 2.0f;
+    public float FallMultiplier = 2.0f;
 
+    public bool isJumping;
     float LookAngle;
     float LeanAngle;
     float JumpSpeed;
@@ -19,11 +22,11 @@ public class character_movement : MonoBehaviour {
     public Vector3 accelarationVector = Vector3.zero;
     public Vector3 velocity = Vector3.zero;
 
-    float GetAccelaration (float Input, float Compare)
+    float GetAccelaration (float In, float Compare)
     {
-        if (Mathf.Abs(Input) > 0){
+        if (Mathf.Abs(In) > 0){
             return Mathf.Clamp(
-                (Mathf.Sign(Input) * WalkSpeed - Compare) * Accelaration,
+                (In * (Input.GetButton("Sprint") ? SprintSpeed : WalkSpeed) - Compare) * Accelaration,
                 -Accelaration,
                 Accelaration
             );
@@ -51,12 +54,20 @@ public class character_movement : MonoBehaviour {
         velocity.z += GetAccelaration(moveVector.z, velocity.z) * Time.deltaTime;
 
         if (controller.isGrounded) {
+            isJumping = false;
+
             if (Input.GetButtonDown("Jump"))
             {
                 velocity.y = JumpSpeed;
+                isJumping = true;
             }
         } else {
             velocity.y += Physics.gravity.y * Time.deltaTime;
+
+            if (controller.velocity.y < 0 && controller.velocity.y > -JumpSpeed)
+            {
+                velocity.y += Physics.gravity.y * (FallMultiplier - 1) * Time.deltaTime;
+            } 
         }
 
         controller.Move(controller.transform.TransformVector(velocity * Time.deltaTime));

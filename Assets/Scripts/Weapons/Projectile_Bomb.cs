@@ -7,9 +7,15 @@ public class Projectile_Bomb : Projectile {
     public float ExplosionPower = 10.0F;
     public float ExplosionTime = 2F;
 
-    // Use this for initialization
+    public Rigidbody rb;
+
+    void Start ()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+    
     public override void Fire() {
-        rb.velocity  = transform.TransformVector(new Vector3(0,0,100));
+        rb.velocity  = transform.TransformVector(new Vector3(0,0,25));
 
         Invoke("Explode",ExplosionTime);
     }
@@ -22,12 +28,15 @@ public class Projectile_Bomb : Projectile {
         {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
 
-            print(rb);
-
             if (rb != null)
-                rb.AddExplosionForce(ExplosionPower, explosionPos, ExplosionRadius, 3F);
+                rb.AddExplosionForce(ExplosionPower, explosionPos, ExplosionRadius, 0);
         }
 
         Destroy(gameObject);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        OnHit();
     }
 }

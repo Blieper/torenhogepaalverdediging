@@ -4,22 +4,38 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-    public Rigidbody rb;
+    public GameObject effect;
+    public Vector3 Offset;
 
-	// Use this for initialization
-	void Start () {
-        rb = transform.GetComponent<Rigidbody>();
+    public void Initialise (GameObject Instigator, Vector3 MuzzlePos, Vector3 ShootPos)
+    {
+        if (transform.GetComponent<Collider>()) {
+            Physics.IgnoreCollision(transform.GetComponent<Collider>(), Instigator.transform.GetComponent<CharacterController>(), true);
+        }
+
+        Offset = transform.InverseTransformVector(MuzzlePos - ShootPos);
+        effect.transform.localPosition = Offset;
 
         Fire();
+        Invoke("AutoDestroy", 10f);
     }
 
-    public virtual void Fire ()
+    void Update ()
     {
+        Offset = Vector3.Lerp(Offset, Vector3.zero, 10f * Time.deltaTime);
+        effect.transform.localPosition = Offset;
 
+        Tick();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public virtual void Fire () {}
+    public virtual void Tick () { }
+    public virtual void OnHit () {
+        Offset = Vector3.zero;
+    }
+
+    void AutoDestroy ()
+    {
+        Destroy(gameObject);
+    }
 }
