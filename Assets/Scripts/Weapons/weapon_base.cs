@@ -128,7 +128,7 @@ public class weapon_base : MonoBehaviour {
         {
             SelectedWeaponID--;
 
-            if (SelectedWeaponID <= 0)
+            if (SelectedWeaponID < 0)
             {
                 SelectedWeaponID = WeaponParent.transform.childCount - 1;
             }
