@@ -11,6 +11,7 @@ public class Weapon_Sway : MonoBehaviour {
     Vector2 SwayVectorAccelDirSmooth = Vector2.zero;
     float SwayStep;
     character_movement charmove;
+    float SwitchOffset;
 
     public GameObject WeaponObject;
     public GameObject WeaponParent;
@@ -21,6 +22,11 @@ public class Weapon_Sway : MonoBehaviour {
     public void Impulse (Vector2 Dir)
     {
         SwayVector += Dir * -Mathf.Sign(Weight);
+    }
+
+    public void Deploy ()
+    {
+        SwitchOffset = 90f;
     }
 
     void Start ()
@@ -59,8 +65,24 @@ public class Weapon_Sway : MonoBehaviour {
         SwayVectorWeighted.x = Mathf.Clamp(SwayVectorWeighted.x, -10, 10);
         SwayVectorWeighted.y = Mathf.Clamp(SwayVectorWeighted.y, -10, 10);
 
-        WeaponObject.transform.localRotation = Quaternion.Euler(SwayVectorWeighted.y, -SwayVectorWeighted.x, SwayVectorWeighted.x);
+        if (charmove.isJumping)
+        {
+            SwayVector.y += charmove.velocity.y * 0.25f * Mathf.Sign(Weight);
+        }
 
-        WeaponParent.transform.localPosition = new Vector3 (SwayVectorWeighted.x, -SwayVectorWeighted.y, SwayVectorWeighted.x) * Lateral / 10;
+        if (SwitchOffset > 0.1f) {
+            SwitchOffset = Mathf.Lerp(SwitchOffset,0,Time.deltaTime * 10f);
+        }
+
+        WeaponObject.transform.localRotation = Quaternion.Euler(
+                                                    SwayVectorWeighted.y - SwitchOffset, 
+                                                    -SwayVectorWeighted.x - SwitchOffset, 
+                                                    SwayVectorWeighted.x);
+
+        WeaponParent.transform.localPosition = new Vector3 (
+                                                    SwayVectorWeighted.x - SwitchOffset, 
+                                                    -SwayVectorWeighted.y - SwitchOffset, 
+                                                    SwayVectorWeighted.x) 
+                                                * Lateral / 100;
     }
 }

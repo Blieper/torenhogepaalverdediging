@@ -750,6 +750,7 @@ MonoBehaviour:
   Deccelaration: 25
   JumpHeight: 1.5
   FallMultiplier: 2
+  isJumping: 0
   moveVector: {x: 0, y: 0, z: 0}
   accelarationVector: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -789,7 +790,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponObject: {fileID: 0}
-  SwayWeight: 0
+  WeaponParent: {fileID: 1127579456306188}
+  Weight: 0
+  Lateral: 1
+  LateralMax: 0
 --- !u!114 &114528571216084430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -808,7 +812,7 @@ MonoBehaviour:
   ReserveAmmo: 48
   ReloadTime: 2
   AmmoAmount: 0
-  SwayWeight: 6
+  SwayWeight: 4
   Recoil: 8
   Offset: {x: 0, y: 0, z: 0}
   ProjectileType: {fileID: 1925706596410724, guid: d5677a12155408e4492ecd0da42850c8,
@@ -833,7 +837,7 @@ MonoBehaviour:
   ReserveAmmo: 105
   ReloadTime: 1.5
   AmmoAmount: 0
-  SwayWeight: 3
+  SwayWeight: -3
   Recoil: 3
   Offset: {x: 0, y: 0, z: 0}
   ProjectileType: {fileID: 1233044386128182, guid: a667f17a3914e234d942aedeef69ba1c,
@@ -858,7 +862,7 @@ MonoBehaviour:
   ReserveAmmo: 90
   ReloadTime: 2
   AmmoAmount: 0
-  SwayWeight: 4
+  SwayWeight: 2
   Recoil: 2
   Offset: {x: 0, y: 0, z: 0}
   ProjectileType: {fileID: 1233044386128182, guid: a667f17a3914e234d942aedeef69ba1c,

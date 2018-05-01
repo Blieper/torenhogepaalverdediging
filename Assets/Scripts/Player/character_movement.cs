@@ -14,7 +14,7 @@ public class character_movement : MonoBehaviour {
     public float JumpHeight = 2.0f;
     public float FallMultiplier = 2.0f;
 
-    bool isJumping;
+    public bool isJumping;
     float LookAngle;
     float LeanAngle;
     float JumpSpeed;

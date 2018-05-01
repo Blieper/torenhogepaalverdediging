@@ -102,17 +102,17 @@ public class weapon_base : MonoBehaviour {
             IsFiring = true;
         }
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1") && !CompleteBurst)
         {
             Reset();
         }
 
-        if (Input.GetButtonDown("Reload"))
+        if (Input.GetButtonDown("Reload") && !IsFiring)
         {
             Reload();
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && !IsFiring)
         {
             SelectedWeaponID++;
 
@@ -123,7 +123,7 @@ public class weapon_base : MonoBehaviour {
 
             SetWeapon(SelectedWeaponID);
             print(SelectedWeaponID);
-        } else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        } else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !IsFiring)
         {
             SelectedWeaponID--;
 
@@ -157,5 +157,6 @@ public class weapon_base : MonoBehaviour {
         }
 
         Reset();
+        Sway.Deploy();
     }
 }
