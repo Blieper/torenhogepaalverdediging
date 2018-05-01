@@ -13,13 +13,11 @@ public class character_movement : MonoBehaviour {
     public float Deccelaration = 2.0f;
     public float JumpHeight = 2.0f;
     public float FallMultiplier = 2.0f;
-    public float CrouchHeight = 1.0f;
 
     public bool isJumping;
     float LookAngle;
     float LeanAngle;
     float JumpSpeed;
-    float CrouchValue;
     public Vector3 moveVector = Vector3.zero;
     public Vector3 accelarationVector = Vector3.zero;
     public Vector3 velocity = Vector3.zero;
@@ -71,9 +69,6 @@ public class character_movement : MonoBehaviour {
                 velocity.y += Physics.gravity.y * (FallMultiplier - 1) * Time.deltaTime;
             } 
         }
-
-        CrouchValue = Mathf.Lerp(CrouchValue, Input.GetButton("Crouch") ? CrouchHeight : 2f, 25f * Time.deltaTime);
-        controller.height = CrouchValue;
 
         controller.Move(controller.transform.TransformVector(velocity * Time.deltaTime));
 
