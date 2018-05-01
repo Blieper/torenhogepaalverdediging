@@ -20,6 +20,7 @@ public class Weapon_Object : MonoBehaviour {
     public Vector3 Offset = new Vector3(0, 0, 0);
     public GameObject ProjectileType;
     public GameObject Owner;
+    public GameObject Muzzle;
     public weapon_base WeaponBase;
 
     void Start ()
@@ -47,6 +48,7 @@ public class Weapon_Object : MonoBehaviour {
         WeaponBase.ProjectileType = ProjectileType;
         WeaponBase.FireDelay = 1f / (FireRate / 60);
         WeaponBase.Sway.Weight = SwayWeight;
+        WeaponBase.Muzzle = Muzzle;
     }
 
     public void Deactivate()

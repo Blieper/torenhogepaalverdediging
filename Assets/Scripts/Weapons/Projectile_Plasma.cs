@@ -6,12 +6,7 @@ public class Projectile_Plasma : Projectile
 {
     public float ExplosionRadius = 5.0F;
     public float ExplosionPower = 10.0F;
-
-    // Use this for initialization
-    public override void Fire()
-    {
-        rb.velocity = transform.TransformVector(new Vector3(0, 0, 1000));
-    }
+    public float Velocity = 500f;
 
     void Explode()
     {
@@ -28,7 +23,29 @@ public class Projectile_Plasma : Projectile
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter(Collision collision)
+    public override void Tick ()
+    {
+        // Bit shift the index of the layer (8) to get a bit mask
+        int layerMask = 1 << 8;
+
+        // This would cast rays only against colliders in layer 8.
+        // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
+        layerMask = ~layerMask;
+
+        RaycastHit hit;
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Velocity * Time.deltaTime, layerMask))
+        {
+            transform.position = hit.point;
+            OnHit();
+        }
+        else
+        {
+            transform.position += transform.TransformDirection(Vector3.forward) * Velocity * Time.deltaTime;
+        }
+    }
+
+    public override void OnHit ()
     {
         Explode();
     }

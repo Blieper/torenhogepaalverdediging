@@ -17,6 +17,7 @@ public class weapon_base : MonoBehaviour {
     public GameObject WeaponParent;
     public GameObject WeaponObject;
     public GameObject CameraObject;
+    public GameObject Muzzle;
 
     public int SelectedWeaponID = 0;
 
@@ -67,7 +68,7 @@ public class weapon_base : MonoBehaviour {
             WeaponObject.GetComponent<Weapon_Object>().AmmoAmount--;
 
             GameObject projectile = Instantiate(ProjectileType, CameraObject.transform.position, CameraObject.transform.rotation);
-            Physics.IgnoreCollision(projectile.transform.GetComponent<Collider>(), transform.GetComponent<CharacterController>(), true);
+            projectile.GetComponent<Projectile>().Initialise(gameObject, Muzzle.transform.position, CameraObject.transform.position);
         }
 
         CheckBurst();
