@@ -140,12 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f9e0c54c6c76647a9d5196b2b339ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 54712820071320966}
   effect: {fileID: 1254397836718576}
   Offset: {x: 0, y: 0, z: 0}
   ExplosionRadius: 25
-  ExplosionPower: 50
+  ExplosionPower: 500
   ExplosionTime: 2
+  rb: {fileID: 54712820071320966}
 --- !u!135 &135019273963757238
 SphereCollider:
   m_ObjectHideFlags: 1
