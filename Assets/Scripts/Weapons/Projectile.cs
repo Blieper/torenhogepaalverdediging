@@ -10,8 +10,7 @@ public class Projectile : MonoBehaviour {
     public Vector3 Muzzle;
     public float Lifetime = 5f;
 
-    public void Initialise (GameObject Instigator, Vector3 MuzzlePos, Vector3 ShootPos)
-    {
+    public void Initialise(GameObject Instigator, Vector3 MuzzlePos, Vector3 ShootPos) {
         Start = ShootPos;
         Muzzle = MuzzlePos;
 
@@ -28,8 +27,7 @@ public class Projectile : MonoBehaviour {
         Invoke("AutoDestroy", Lifetime);
     }
 
-    void Update ()
-    {
+    void Update() {
         Offset = Vector3.Lerp(Offset, Vector3.zero, 10f * Time.deltaTime);
 
         if (effect)
@@ -38,14 +36,13 @@ public class Projectile : MonoBehaviour {
         Tick();
     }
 
-    public virtual void Fire () {}
-    public virtual void Tick () { }
-    public virtual void OnHit () {
+    public virtual void Fire() { }
+    public virtual void Tick() { }
+    public virtual void OnHit() {
         Offset = Vector3.zero;
     }
 
-    void AutoDestroy ()
-    {
+    void AutoDestroy() {
         Destroy(gameObject);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon_Sway : MonoBehaviour {
+public class WeaponSway : MonoBehaviour {
 
     Vector2 SwayDirSmooth = Vector2.zero;
     Vector2 SwayVector = Vector2.zero;
@@ -10,7 +10,7 @@ public class Weapon_Sway : MonoBehaviour {
     Vector2 SwayVectorAccelDir = Vector2.zero;
     Vector2 SwayVectorAccelDirSmooth = Vector2.zero;
     float SwayStep;
-    character_movement charmove;
+    CharacterMovement charmove;
     float SwitchOffset;
 
     public GameObject WeaponObject;
@@ -19,29 +19,26 @@ public class Weapon_Sway : MonoBehaviour {
     public float Lateral = 1f;
     public float LateralMax;
 
-    public void Impulse (Vector2 Dir)
-    {
+    public void Impulse(Vector2 Dir) {
         SwayVector += Dir * -Mathf.Sign(Weight);
     }
 
-    public void Deploy ()
-    {
+    public void Deploy() {
         SwitchOffset = 90f;
     }
 
-    void Start ()
-    {
-        charmove = transform.GetComponent<character_movement>();
+    void Start() {
+        charmove = transform.GetComponent<CharacterMovement>();
     }
 
-    void Update () {
+    void Update() {
         Vector2 swayDir = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         swayDir = swayDir.normalized * swayDir.magnitude;
         SwayDirSmooth = Vector2.Lerp(SwayDirSmooth, swayDir, 15f * Time.deltaTime);
         SwayVector += SwayDirSmooth;
-        SwayVector -= 
-            SwayVector * 
-            (4.015848f + (21.87705f - 4.015848f) /  (1 + Mathf.Pow((Mathf.Abs(Weight) / 4.206759f), 1.480224f))) 
+        SwayVector -=
+            SwayVector *
+            (4.015848f + (21.87705f - 4.015848f) / (1 + Mathf.Pow((Mathf.Abs(Weight) / 4.206759f), 1.480224f)))
             * Time.deltaTime;
 
         SwayVectorAccelDir = new Vector2(SwayVector.x > 0 ? -0.25f : 0.25f, SwayVector.y > 0 ? -0.25f : 0.25f);
@@ -65,24 +62,23 @@ public class Weapon_Sway : MonoBehaviour {
         SwayVectorWeighted.x = Mathf.Clamp(SwayVectorWeighted.x, -10, 10);
         SwayVectorWeighted.y = Mathf.Clamp(SwayVectorWeighted.y, -10, 10);
 
-        if (charmove.isJumping)
-        {
+        if (charmove.isJumping) {
             SwayVector.y += charmove.velocity.y * 0.25f * Mathf.Sign(Weight);
         }
 
         if (SwitchOffset > 0.1f) {
-            SwitchOffset = Mathf.Lerp(SwitchOffset,0,Time.deltaTime * 10f);
+            SwitchOffset = Mathf.Lerp(SwitchOffset, 0, Time.deltaTime * 10f);
         }
 
         WeaponObject.transform.localRotation = Quaternion.Euler(
-                                                    SwayVectorWeighted.y - SwitchOffset, 
-                                                    -SwayVectorWeighted.x - SwitchOffset, 
+                                                    SwayVectorWeighted.y - SwitchOffset,
+                                                    -SwayVectorWeighted.x - SwitchOffset,
                                                     SwayVectorWeighted.x);
 
-        WeaponParent.transform.localPosition = new Vector3 (
-                                                    SwayVectorWeighted.x - SwitchOffset, 
-                                                    -SwayVectorWeighted.y - SwitchOffset, 
-                                                    SwayVectorWeighted.x) 
+        WeaponParent.transform.localPosition = new Vector3(
+                                                    SwayVectorWeighted.x - SwitchOffset,
+                                                    -SwayVectorWeighted.y - SwitchOffset,
+                                                    SwayVectorWeighted.x)
                                                 * Lateral / 100;
     }
 }

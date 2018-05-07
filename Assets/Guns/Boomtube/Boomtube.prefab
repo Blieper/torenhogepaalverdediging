@@ -208,10 +208,13 @@ MonoBehaviour:
   ReserveAmmo: 48
   ReloadTime: 2
   AmmoAmount: 0
-  Weight: 6
+  SwayWeight: 25
   Recoil: 8
+  SpeedMul: 0.5
   Offset: {x: 0, y: 0, z: 0}
   ProjectileType: {fileID: 1925706596410724, guid: d5677a12155408e4492ecd0da42850c8,
     type: 2}
   Owner: {fileID: 0}
+  Muzzle: {fileID: 0}
   WeaponBase: {fileID: 0}
+  Attributes: {fileID: 0}

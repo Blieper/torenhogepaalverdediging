@@ -385,9 +385,11 @@ MonoBehaviour:
   AmmoAmount: 0
   SwayWeight: 2
   Recoil: 5
+  SpeedMul: 1
   Offset: {x: 0, y: 0, z: 0}
   ProjectileType: {fileID: 1384544410455996, guid: a38db6769d7e1ef49a8a471e044f65f8,
     type: 2}
   Owner: {fileID: 0}
   Muzzle: {fileID: 1271272271024824}
   WeaponBase: {fileID: 0}
+  Attributes: {fileID: 0}

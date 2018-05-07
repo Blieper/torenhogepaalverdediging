@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile_Shotgun : Projectile
-{
+public class Projectile_Shotgun : Projectile {
     public float Spread = 1.0F;
     public int Amount = 12;
     public GameObject ProjectileType;
 
-    public override void Fire()
-    {
-        for (int i = 1; i <= Amount; i++)
-        {
+    public override void Fire() {
+        for (int i = 1; i <= Amount; i++) {
             print(i);
 
             Vector2 Spreadvec = new Vector2(Random.value, Random.value);
