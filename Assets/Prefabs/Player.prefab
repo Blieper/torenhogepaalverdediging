@@ -68,11 +68,11 @@ GameObject:
   - component: {fileID: 4542284749747268}
   - component: {fileID: 33850602352015612}
   - component: {fileID: 23486829367750796}
-  - component: {fileID: 114875071023591250}
   - component: {fileID: 143419204401382778}
   - component: {fileID: 114096423714259258}
   - component: {fileID: 114180627818583696}
   - component: {fileID: 114417547547936968}
+  - component: {fileID: 114888768733506194}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -535,7 +535,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127579456306188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.002286537, y: 0.0008145979, z: 0.002286537}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4860006839338746}
@@ -606,7 +606,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1114681110794722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.19038065, y: 0, z: 0, w: 0.9817104}
   m_LocalPosition: {x: 0, y: 0.683, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -634,7 +634,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1719954598437980}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.00071484945, y: -0.0019939558, z: 0.0019939558, w: 0.9999958}
   m_LocalPosition: {x: 0.316, y: -0.542, z: 0.737}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1260,7 +1260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 20955232483901796}
-  controller: {fileID: 0}
+  controller: {fileID: 143419204401382778}
   SprintSpeed: 7
   WalkSpeed: 4
   SpeedMul: 1
@@ -1273,7 +1273,7 @@ MonoBehaviour:
   canMove: 1
   moveVector: {x: 0, y: 0, z: 0}
   accelarationVector: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: -7.0454955, z: 0}
 --- !u!114 &114180627818583696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1285,20 +1285,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b86e2bf9558f4c479750373582ee719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 500
+  FireRate: 140
   Burst: 0
   CompleteBurst: 0
   ReloadTime: 2
   Recoil: 5
-  ProjectileType: {fileID: 1925706596410724, guid: d5677a12155408e4492ecd0da42850c8,
+  ProjectileType: {fileID: 1384544410455996, guid: a38db6769d7e1ef49a8a471e044f65f8,
     type: 2}
   WeaponParent: {fileID: 1127579456306188}
-  WeaponObject: {fileID: 1127579456306188}
+  WeaponObject: {fileID: 1719954598437980}
   CameraObject: {fileID: 1114681110794722}
-  Muzzle: {fileID: 0}
+  Muzzle: {fileID: 1028483393181474}
   SelectedWeaponID: 0
-  Sway: {fileID: 0}
-  FireDelay: 0
+  Sway: {fileID: 114417547547936968}
+  FireDelay: 0.42857143
 --- !u!114 &114389175457580948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1344,7 +1344,7 @@ MonoBehaviour:
   AmmoCapacity: 16
   ReserveAmmo: 64
   ReloadTime: 2
-  AmmoAmount: 0
+  AmmoAmount: 16
   SwayWeight: 2
   Recoil: 5
   SpeedMul: 1
@@ -1353,7 +1353,7 @@ MonoBehaviour:
     type: 2}
   Owner: {fileID: 1102535345644536}
   Muzzle: {fileID: 1028483393181474}
-  WeaponBase: {fileID: 0}
+  WeaponBase: {fileID: 114180627818583696}
   Attributes: {fileID: 0}
 --- !u!114 &114417547547936968
 MonoBehaviour:
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponObject: {fileID: 1719954598437980}
   WeaponParent: {fileID: 1127579456306188}
-  Weight: 0
+  Weight: 2
   Lateral: 1
   LateralMax: 0
 --- !u!114 &114528571216084430
@@ -1399,19 +1399,6 @@ MonoBehaviour:
   Muzzle: {fileID: 1851322078436098}
   WeaponBase: {fileID: 0}
   Attributes: {fileID: 0}
---- !u!114 &114875071023591250
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1102535345644536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84581588fabdc484bb0d769f91ad0d71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WeaponParent: {fileID: 0}
-  MaxHealth: 100
 --- !u!114 &114883685542323750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1440,6 +1427,24 @@ MonoBehaviour:
   Muzzle: {fileID: 1064222094504452}
   WeaponBase: {fileID: 0}
   Attributes: {fileID: 0}
+--- !u!114 &114888768733506194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1102535345644536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1460b8d367f56f438b5b25bb0185c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxValue: 100
+  MinValue: 0
+  Default: 100
+  CanRespawn: 1
+  RespawnTime: 3
+  WeaponParent: {fileID: 1127579456306188}
+  Respawns: []
 --- !u!124 &124658945251940952
 Behaviour:
   m_ObjectHideFlags: 1

@@ -29,10 +29,10 @@ public class Projectile_Bomb : Projectile {
             if (rb != null)
                 rb.AddExplosionForce(ExplosionPower, explosionPos, ExplosionRadius, 0);
 
-            Attributes attr = hit.GetComponent<Attributes>();
+            Health healthStat = hit.GetComponent<Health>();
 
-            if (attr != null)
-                attr.Health -= ExplosionDamage;
+            if (healthStat != null)
+                healthStat.Value -= ExplosionDamage;
         }
 
         Destroy(gameObject);

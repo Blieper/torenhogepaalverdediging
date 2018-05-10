@@ -32,7 +32,7 @@ public class Attributes : MonoBehaviour {
         }
         set {
             speed = value;
-            characterMovement.SpeedMul = value;
+            //characterMovement.SpeedMul = value;
         }
     }
 

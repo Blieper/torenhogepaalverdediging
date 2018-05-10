@@ -36,7 +36,6 @@ public class WeaponObject : MonoBehaviour {
     }
 
     public void Activate() {
-        Attributes = Owner.GetComponent<Attributes>();
 
         this.gameObject.SetActive(true);
 
@@ -50,7 +49,7 @@ public class WeaponObject : MonoBehaviour {
         WeaponBase.FireDelay = 1f / (FireRate / 60);
         WeaponBase.Sway.Weight = SwayWeight;
         WeaponBase.Muzzle = Muzzle;
-        Attributes.Speed = SpeedMul;
+        //Attributes.Speed = SpeedMul;
     }
 
     public void Deactivate() {

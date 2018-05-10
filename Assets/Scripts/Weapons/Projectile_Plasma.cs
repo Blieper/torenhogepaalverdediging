@@ -6,6 +6,7 @@ public class Projectile_Plasma : Projectile {
     public float ExplosionRadius = 5.0F;
     public float ExplosionPower = 10.0F;
     public float Velocity = 500f;
+    public int ExplosionDamage = 15;
 
     void Explode() {
         Vector3 explosionPos = transform.position;
@@ -15,6 +16,11 @@ public class Projectile_Plasma : Projectile {
 
             if (rb != null)
                 rb.AddExplosionForce(ExplosionPower, explosionPos, ExplosionRadius, 0);
+
+            Health healthStat = hit.GetComponent<Health>();
+
+            if (healthStat != null)
+                healthStat.Value -= ExplosionDamage;
         }
 
         Destroy(gameObject);
