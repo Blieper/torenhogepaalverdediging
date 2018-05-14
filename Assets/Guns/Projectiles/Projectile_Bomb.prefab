@@ -142,9 +142,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effect: {fileID: 1254397836718576}
   Offset: {x: 0, y: 0, z: 0}
-  ExplosionRadius: 25
+  Start: {x: 0, y: 0, z: 0}
+  Muzzle: {x: 0, y: 0, z: 0}
+  Lifetime: 5
+  ExplosionRadius: 2.5
   ExplosionPower: 500
   ExplosionTime: 2
+  ExplosionDamage: 25
   rb: {fileID: 54712820071320966}
 --- !u!135 &135019273963757238
 SphereCollider:

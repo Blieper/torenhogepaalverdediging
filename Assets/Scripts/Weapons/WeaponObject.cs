@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon_Object : MonoBehaviour {
+public class WeaponObject : MonoBehaviour {
 
     // How many rounds per minute does the weapon fire?
     public float FireRate = 500;
@@ -16,30 +16,33 @@ public class Weapon_Object : MonoBehaviour {
     public int AmmoAmount = 0;
     public float SwayWeight = 25f;
     public float Recoil = 2f;
+    public float SpeedMul = 1f;
 
     public Vector3 Offset = new Vector3(0, 0, 0);
     public GameObject ProjectileType;
+    public GameObject PickupObject;
     public GameObject Owner;
     public GameObject Muzzle;
-    public weapon_base WeaponBase;
+    public WeaponBase WeaponBase;
+    public Attributes Attributes;
 
-    void Start ()
-    {
+    void Start() {
         AmmoAmount = AmmoCapacity;
     }
 
-    public void SetOwner(GameObject NewOwner)
-    {
+    public void SetOwner(GameObject NewOwner) {
         Owner = NewOwner;
-        this.transform.SetParent(WeaponBase.WeaponObject.transform);
+        WeaponBase = Owner.GetComponent<WeaponBase>();
+        this.Deactivate();
+        this.transform.SetParent(WeaponBase.WeaponParent.transform);
         this.transform.localPosition = Offset;
     }
 
-    public void Activate ()
-    {
+    public void Activate() {
+
         this.gameObject.SetActive(true);
 
-        WeaponBase = Owner.GetComponent<weapon_base>();
+        WeaponBase = Owner.GetComponent<WeaponBase>();
         WeaponBase.FireRate = FireRate;
         WeaponBase.Burst = Burst;
         WeaponBase.CompleteBurst = CompleteBurst;
@@ -51,8 +54,7 @@ public class Weapon_Object : MonoBehaviour {
         WeaponBase.Muzzle = Muzzle;
     }
 
-    public void Deactivate()
-    {
+    public void Deactivate() {
         this.gameObject.SetActive(false);
     }
 }
