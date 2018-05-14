@@ -23,7 +23,7 @@ public class Interact : MonoBehaviour {
 
                 if (interactable)
                 {
-                    interactable.Interact();
+                    interactable.Interact(gameObject);
                 }
             }
         }

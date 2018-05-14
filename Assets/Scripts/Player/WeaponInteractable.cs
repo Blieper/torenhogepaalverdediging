@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WeaponInteractable : Interactable {
 
-    public override void Interact()
+    public override void Interact(GameObject Object)
     {
-        GetComponent<WeaponPickup>().OnPickup();
+        GetComponent<WeaponPickup>().OnPickup(Object);
     }
 }
