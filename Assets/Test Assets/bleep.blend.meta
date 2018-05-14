@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: ea1fee2ac36ff73469e2e8397fde16af
-timeCreated: 1526333901
+guid: 4b1a4bba2ab031545889bcd2ab4368f5
+timeCreated: 1526336263
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Cube
-    100002: Cube_001
-    100004: Cube_002
-    100006: Cube_003
-    100008: Cube_004
-    100010: Cube_005
-    100012: //RootNode
+    100000: //RootNode
+    100002: Cube
+    100004: Cube_001
+    100006: Cube_002
+    100008: Cube_003
+    100010: Cube_004
+    100012: Cube_005
     100014: Sphere
-    400000: Cube
-    400002: Cube_001
-    400004: Cube_002
-    400006: Cube_003
-    400008: Cube_004
-    400010: Cube_005
-    400012: //RootNode
+    400000: //RootNode
+    400002: Cube
+    400004: Cube_001
+    400006: Cube_002
+    400008: Cube_003
+    400010: Cube_004
+    400012: Cube_005
     400014: Sphere
     2300000: Cube
     2300002: Cube_001
@@ -35,9 +35,9 @@ ModelImporter:
     3300008: Cube_004
     3300010: Cube_005
     3300012: Sphere
-    4300000: Cube_005
-    4300002: Cube_004
-    4300004: Cube_002
+    4300000: Cube_002
+    4300002: Cube_005
+    4300004: Cube_004
     4300006: Cube_003
     4300008: Cube_001
     4300010: Cube
@@ -45,6 +45,26 @@ ModelImporter:
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pomi_c1
+    second: {fileID: 2100000, guid: 893d61d509a670b4c987fdc810eaf24f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pomi_c2
+    second: {fileID: 2100000, guid: 9c0a18e5e84a9a34bb5c6c5f462c3471, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pomi_c3
+    second: {fileID: 2100000, guid: 4334e97ce06229540a77a456c6a9da3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pomi_c4
+    second: {fileID: 2100000, guid: c107b0f3492c30d40ac26881538daa9b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
