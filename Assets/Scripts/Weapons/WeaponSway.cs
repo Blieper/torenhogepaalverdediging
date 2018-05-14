@@ -82,5 +82,7 @@ public class WeaponSway : MonoBehaviour {
                                                     -SwayVectorWeighted.y - SwitchOffset,
                                                     SwayVectorWeighted.x)
                                                 * Lateral / 100;
+
+
     }
 }
