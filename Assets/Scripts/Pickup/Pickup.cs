@@ -19,7 +19,7 @@ public class Pickup : MonoBehaviour
         VisualPart.transform.localPosition = new Vector3(0,Mathf.Sin(Rotation * 0.1f) * OscillationHeight, 0);
     }
 
-    public virtual void OnPickup(GameObject Object)
+    public virtual void OnPickup(GameObject Object, bool Interacted = false)
     {
 
     }

@@ -9,7 +9,6 @@ public class Projectile_Shotgun : Projectile {
 
     public override void Fire() {
         for (int i = 1; i <= Amount; i++) {
-            print(i);
 
             Vector2 Spreadvec = new Vector2(Random.value, Random.value);
             Spreadvec = Spreadvec.normalized * Random.Range(0, Spread);

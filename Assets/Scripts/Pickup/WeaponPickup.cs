@@ -6,7 +6,7 @@ public class WeaponPickup : Pickup {
 
     public GameObject Weapon;
 
-	public override void OnPickup (GameObject Object)
+	public override void OnPickup (GameObject Object, bool Interacted)
     {
         WeaponBase weaponBase = Object.GetComponent<WeaponBase>();
 
@@ -24,19 +24,44 @@ public class WeaponPickup : Pickup {
                 }
             }
 
-            var CreatedWeapon = Instantiate(
-                Weapon,
-                weaponBase.WeaponParent.transform.position,
-                weaponBase.WeaponParent.transform.rotation);
+            if (WeaponCount < 1) {
+                var CreatedWeapon = Instantiate(
+                    Weapon,
+                    weaponBase.WeaponParent.transform.position,
+                    weaponBase.WeaponParent.transform.rotation);
 
-            CreatedWeapon.GetComponent<WeaponObject>().SetOwner(Object);
+                CreatedWeapon.GetComponent<WeaponObject>().SetOwner(Object);
+
+                GameObject.Destroy(gameObject);
+            } 
             
             if (WeaponCount == 0)
             {
                 weaponBase.SetWeapon(0);
             }
 
-            GameObject.Destroy(gameObject);
+            if (WeaponCount == 1 && Interacted) {
+                int index = weaponBase.WeaponObject.transform.GetSiblingIndex();
+
+                var NewPickup = Instantiate(
+                    weaponBase.WeaponObject.GetComponent<WeaponObject>().PickupObject,
+                    transform.position,
+                    transform.rotation);
+                
+                GameObject.Destroy(weaponBase.WeaponObject);
+
+                var CreatedWeapon = Instantiate(
+                    Weapon,
+                    weaponBase.WeaponParent.transform.position,
+                    weaponBase.WeaponParent.transform.rotation);
+
+                CreatedWeapon.GetComponent<WeaponObject>().SetOwner(Object);
+
+                CreatedWeapon.transform.SetSiblingIndex(index);
+                weaponBase.SetWeapon(index);
+
+                GameObject.Destroy(gameObject);
+            }
         }
     }
 }

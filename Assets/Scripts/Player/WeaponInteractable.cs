@@ -6,6 +6,6 @@ public class WeaponInteractable : Interactable {
 
     public override void Interact(GameObject Object)
     {
-        GetComponent<WeaponPickup>().OnPickup(Object);
+        GetComponent<WeaponPickup>().OnPickup(Object, true);
     }
 }
