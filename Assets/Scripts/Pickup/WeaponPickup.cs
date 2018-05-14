@@ -7,11 +7,6 @@ public class WeaponPickup : Pickup {
 
     public GameObject Weapon;
 
-    private void Start()
-    {
-        print(Weapon.name);
-    }
-	
 	public override void OnPickup (GameObject Object)
     {
         WeaponBase weaponBase = Object.GetComponent<WeaponBase>();
