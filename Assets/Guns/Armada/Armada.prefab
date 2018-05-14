@@ -143,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805592618880986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.316, y: -0.542, z: 0.737}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4683499618319168}
@@ -386,7 +386,7 @@ MonoBehaviour:
   SwayWeight: 2
   Recoil: 5
   SpeedMul: 1
-  Offset: {x: 0, y: 0, z: 0}
+  Offset: {x: 0.316, y: -0.542, z: 0.737}
   ProjectileType: {fileID: 1384544410455996, guid: a38db6769d7e1ef49a8a471e044f65f8,
     type: 2}
   Owner: {fileID: 0}
