@@ -24,7 +24,7 @@ public class WeaponPickup : Pickup {
                 }
             }
 
-            if (WeaponCount < 1) {
+            if (WeaponCount < 3) {
                 var CreatedWeapon = Instantiate(
                     Weapon,
                     weaponBase.WeaponParent.transform.position,
@@ -40,7 +40,7 @@ public class WeaponPickup : Pickup {
                 weaponBase.SetWeapon(0);
             }
 
-            if (WeaponCount == 1 && Interacted) {
+            if (WeaponCount == 3 && Interacted) {
                 int index = weaponBase.WeaponObject.transform.GetSiblingIndex();
 
                 var NewPickup = Instantiate(
