@@ -31,7 +31,9 @@ public class WeaponObject : MonoBehaviour {
 
     public void SetOwner(GameObject NewOwner) {
         Owner = NewOwner;
-        this.transform.SetParent(WeaponBase.WeaponObject.transform);
+        WeaponBase = Owner.GetComponent<WeaponBase>();
+        this.Deactivate();
+        this.transform.SetParent(WeaponBase.WeaponParent.transform);
         this.transform.localPosition = Offset;
     }
 

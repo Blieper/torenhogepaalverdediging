@@ -88,7 +88,7 @@ public class WeaponBase : MonoBehaviour {
             Fire();
         }
 
-        if (Input.GetButtonDown("Fire1") && Time.time > FireTime) {
+        if (Input.GetButtonDown("Fire1") && Time.time > FireTime && WeaponObject) {
             Fire();
             IsFiring = true;
         }
@@ -97,7 +97,7 @@ public class WeaponBase : MonoBehaviour {
             Reset();
         }
 
-        if (Input.GetButtonDown("Reload") && !IsFiring) {
+        if (Input.GetButtonDown("Reload") && !IsFiring && WeaponObject) {
             Reload();
         }
 
@@ -121,7 +121,7 @@ public class WeaponBase : MonoBehaviour {
         }
     }
 
-    void SetWeapon(int ID) {
+    public void SetWeapon(int ID) {
         int i = 0;
         foreach (Transform Weapon in WeaponParent.transform) {
             if (i == ID) {

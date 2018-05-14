@@ -70,10 +70,12 @@ public class WeaponSway : MonoBehaviour {
             SwitchOffset = Mathf.Lerp(SwitchOffset, 0, Time.deltaTime * 10f);
         }
 
-        WeaponObject.transform.localRotation = Quaternion.Euler(
-                                                    SwayVectorWeighted.y - SwitchOffset,
-                                                    -SwayVectorWeighted.x - SwitchOffset,
-                                                    SwayVectorWeighted.x);
+        if (WeaponObject) {
+            WeaponObject.transform.localRotation = Quaternion.Euler(
+                                                        SwayVectorWeighted.y - SwitchOffset,
+                                                        -SwayVectorWeighted.x - SwitchOffset,
+                                                        SwayVectorWeighted.x);
+        }
 
         WeaponParent.transform.localPosition = new Vector3(
                                                     SwayVectorWeighted.x - SwitchOffset,
