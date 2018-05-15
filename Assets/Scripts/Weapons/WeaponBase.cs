@@ -101,7 +101,7 @@ public class WeaponBase : MonoBehaviour {
             Reload();
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && !IsFiring) {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && !IsFiring && WeaponParent.transform.childCount > 1) {
             SelectedWeaponID++;
 
             if (SelectedWeaponID >= WeaponParent.transform.childCount) {
@@ -110,7 +110,7 @@ public class WeaponBase : MonoBehaviour {
 
             SetWeapon(SelectedWeaponID);
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !IsFiring) {
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !IsFiring && WeaponParent.transform.childCount > 1) {
             SelectedWeaponID--;
 
             if (SelectedWeaponID < 0) {

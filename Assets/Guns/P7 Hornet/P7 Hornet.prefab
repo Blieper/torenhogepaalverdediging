@@ -245,7 +245,8 @@ MonoBehaviour:
   Offset: {x: 0.31, y: -1.18, z: 1.13}
   ProjectileType: {fileID: 1233044386128182, guid: a667f17a3914e234d942aedeef69ba1c,
     type: 2}
-  PickupObject: {fileID: 0}
+  PickupObject: {fileID: 1752388698659958, guid: 4139113e1ba30514f9eba087856cceb6,
+    type: 2}
   Owner: {fileID: 0}
   Muzzle: {fileID: 1247385555485858}
   WeaponBase: {fileID: 0}

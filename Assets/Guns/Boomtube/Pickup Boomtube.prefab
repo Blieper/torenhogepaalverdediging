@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33856299023935352}
   - component: {fileID: 135020057017262238}
   - component: {fileID: 114059171541613382}
+  - component: {fileID: 114154590389910866}
   m_Layer: 0
   m_Name: Pickup Boomtube
   m_TagString: Untagged
@@ -241,6 +242,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VisualPart: {fileID: 1907148327547888}
   Weapon: {fileID: 1192370618179806, guid: 60a2f77a130159f40b63164e6d3cccd3, type: 2}
+--- !u!114 &114154590389910866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010337450435330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855d408622650d84a8257b282c8ddf20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135020057017262238
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -237,7 +237,7 @@ MonoBehaviour:
   ReserveAmmo: 48
   ReloadTime: 2
   AmmoAmount: 0
-  SwayWeight: 25
+  SwayWeight: 10
   Recoil: 8
   SpeedMul: 0.5
   Offset: {x: 0.64, y: -1.71, z: 1.72}
