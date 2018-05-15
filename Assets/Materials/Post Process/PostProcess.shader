@@ -53,12 +53,7 @@ Shader "Shader Forge/PostProcess" {
 ////// Emissive:
                 float2 node_8397 = i.uv0; // Refract here
                 float4 node_1672 = tex2D(_MainTex,TRANSFORM_TEX(node_8397, _MainTex));
-                float3 node_4676 = node_1672.rgb; // Modify color here
-                float node_7039 = max(0, LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, (i.uv0+float2(0.001,0.001)))) - _ProjectionParams.g);
-                float node_4585 = (node_7039+max(0, LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, (i.uv0+float2(-0.001,0.001)))) - _ProjectionParams.g)+max(0, LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, (i.uv0+float2(-0.001,-0.001)))) - _ProjectionParams.g)+max(0, LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, (i.uv0+float2(0.001,-0.001)))) - _ProjectionParams.g));
-                float node_5293 = max(0, LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv0)) - _ProjectionParams.g);
-                float node_1790 = ((node_4585/4.0)-node_5293);
-                float3 emissive = (node_4676*(1.0 - node_1790));
+                float3 emissive = (node_1672.rgb*(1.0 - (((max(0, LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, (i.uv0+float2(0.001,0.001)))) - _ProjectionParams.g)+max(0, LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, (i.uv0+float2(-0.001,0.001)))) - _ProjectionParams.g)+max(0, LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, (i.uv0+float2(-0.001,-0.001)))) - _ProjectionParams.g)+max(0, LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, (i.uv0+float2(0.001,-0.001)))) - _ProjectionParams.g))/4.0)-max(0, LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv0)) - _ProjectionParams.g))));
                 float3 finalColor = emissive;
                 return fixed4(finalColor,1);
             }
