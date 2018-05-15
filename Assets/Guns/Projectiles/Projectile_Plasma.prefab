@@ -222,7 +222,7 @@ MonoBehaviour:
   Start: {x: 0, y: 0, z: 0}
   Muzzle: {x: 0, y: 0, z: 0}
   Lifetime: 5
-  ExplosionRadius: 5
+  ExplosionRadius: 0.5
   ExplosionPower: 10
   Velocity: 500
   ExplosionDamage: 15
