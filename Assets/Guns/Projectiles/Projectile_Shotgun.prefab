@@ -54,8 +54,9 @@ MonoBehaviour:
   effect: {fileID: 0}
   Offset: {x: 0, y: 0, z: 0}
   Start: {x: 0, y: 0, z: 0}
+  Muzzle: {x: 0, y: 0, z: 0}
   Lifetime: 0
   Spread: 0.2
   Amount: 12
-  ProjectileType: {fileID: 1233044386128182, guid: a667f17a3914e234d942aedeef69ba1c,
+  ProjectileType: {fileID: 1721784841153406, guid: 4de41e633bf1aae47b481e8f09d5c86d,
     type: 2}

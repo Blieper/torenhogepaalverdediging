@@ -222,5 +222,5 @@ MonoBehaviour:
   Start: {x: 0, y: 0, z: 0}
   Muzzle: {x: 0, y: 0, z: 0}
   Lifetime: 5
-  Velocity: 500
+  Velocity: 100
   Damage: 15

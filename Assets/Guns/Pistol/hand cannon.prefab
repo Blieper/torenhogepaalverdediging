@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aebae3fdb0c4cc4d8678befa80fe80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 150
+  FireRate: 250
   Burst: 1
   CompleteBurst: 0
   AmmoCapacity: 8
@@ -311,12 +311,13 @@ MonoBehaviour:
   ReloadTime: 2
   AmmoAmount: 0
   SwayWeight: -5
-  Recoil: 4
+  Recoil: 8
   SpeedMul: 1
   Offset: {x: 0.28, y: -0.33, z: 0.67}
-  ProjectileType: {fileID: 1233044386128182, guid: a667f17a3914e234d942aedeef69ba1c,
+  ProjectileType: {fileID: 1721784841153406, guid: 4de41e633bf1aae47b481e8f09d5c86d,
     type: 2}
-  PickupObject: {fileID: 0}
+  PickupObject: {fileID: 1578583686031572, guid: bd5785c26193b674bbfb888cc57a4679,
+    type: 2}
   Owner: {fileID: 0}
   Muzzle: {fileID: 1560692950984032}
   WeaponBase: {fileID: 0}
