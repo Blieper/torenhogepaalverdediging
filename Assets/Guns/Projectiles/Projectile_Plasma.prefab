@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4946027649734284}
-  - component: {fileID: 114768166045760984}
+  - component: {fileID: 114464264371969258}
   m_Layer: 0
   m_Name: Projectile_Plasma
   m_TagString: Untagged
@@ -206,7 +206,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114768166045760984
+--- !u!114 &114464264371969258
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1233044386128182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f629433d44f47a747b6e3ecbac180e4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 36a036d6dce9b6f4a847fae439f0cdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 1247177051668270}
@@ -222,5 +222,7 @@ MonoBehaviour:
   Start: {x: 0, y: 0, z: 0}
   Muzzle: {x: 0, y: 0, z: 0}
   Lifetime: 5
+  ExplosionRadius: 5
+  ExplosionPower: 10
   Velocity: 500
-  Damage: 15
+  ExplosionDamage: 15

@@ -14,6 +14,8 @@ public class Statistic : MonoBehaviour {
             float Old = Value;
             _value = Mathf.Clamp(value, MinValue, MaxValue);
 
+            print(_value);
+
             if (Old != Value)
                 OnValueChanged(Old, Value);
         }

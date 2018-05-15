@@ -32,15 +32,12 @@ public class Projectile_Bounce : Projectile
             if (healthStat != null)
             {
                 healthStat.Value -= Damage;
-                GameObject.Destroy(gameObject);
-            } else
-            {
-                transform.position = hit.point;
+                //GameObject.Destroy(gameObject);
+            } 
 
-                MoveDirection = Vector3.Reflect(MoveDirection, hit.normal);
-
-                transform.position += MoveDirection * Velocity * Time.deltaTime;
-            }
+            transform.position = hit.point;
+            MoveDirection = Vector3.Reflect(MoveDirection, hit.normal);
+            transform.position += MoveDirection * Velocity * Time.deltaTime;
         }
         else
         {
