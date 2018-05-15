@@ -6,7 +6,6 @@ TagManager:
   tags:
   - NPC Spawn
   - NPC End Point
-  - Gameplay Object
   layers:
   - Default
   - TransparentFX

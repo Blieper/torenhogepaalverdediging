@@ -6,9 +6,10 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NPC : MonoBehaviour {
 
-    public NavMeshAgent Agent;
-    GameplayNPCSpawner Spawner;
+    NavMeshAgent Agent;
     public GameObject Target;
+
+    //bool IsMoving = true;
 
     public virtual void Start () {
         Agent = GetComponent<NavMeshAgent>();
@@ -21,5 +22,6 @@ public class NPC : MonoBehaviour {
     public virtual void MoveToTarget ()
     {
         Agent.SetDestination(Target.transform.position);
+        //IsMoving = true;
     }
 }
