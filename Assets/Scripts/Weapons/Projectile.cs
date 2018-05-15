@@ -36,6 +36,7 @@ public class Projectile : MonoBehaviour {
         Tick();
     }
 
+    public virtual void OnFire() { }
     public virtual void Fire() { }
     public virtual void Tick() { }
     public virtual void OnHit() {
