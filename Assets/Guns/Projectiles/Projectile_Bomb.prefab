@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4109649620012522}
   - component: {fileID: 33345515603317248}
   - component: {fileID: 23344746085021980}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 135019273963757238}
   - component: {fileID: 54712820071320966}
   - component: {fileID: 114157133189026166}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projectile_Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}

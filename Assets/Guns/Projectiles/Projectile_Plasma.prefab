@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4946027649734284}
   - component: {fileID: 114464264371969258}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projectile_Plasma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 33345378647192622}
   - component: {fileID: 23487803933004304}
   - component: {fileID: 96874047391621396}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

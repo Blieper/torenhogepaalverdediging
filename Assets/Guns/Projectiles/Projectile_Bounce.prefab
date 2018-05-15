@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33692690850790020}
   - component: {fileID: 23842674877853662}
   - component: {fileID: 96595652083935188}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4204561928911328}
   - component: {fileID: 114510465817451228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Projectile_Bounce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
