@@ -89,7 +89,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4661273222798408}
-  - component: {fileID: 114682425530548080}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -104,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1102535345644536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.474373, y: 1.9585097, z: 32.15263}
+  m_LocalPosition: {x: 30.743809, y: 1.9585097, z: 32.30443}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4786273169853800}
@@ -522,38 +521,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 10
   m_InterpolateMovement: 1
---- !u!114 &114682425530548080
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1127579456306188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 31
-    i1: 249
-    i2: 110
-    i3: 162
-    i4: 20
-    i5: 64
-    i6: 57
-    i7: 100
-    i8: 170
-    i9: 249
-    i10: 223
-    i11: 102
-    i12: 229
-    i13: 23
-    i14: 196
-    i15: 65
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114694176130936962
 MonoBehaviour:
   m_ObjectHideFlags: 1

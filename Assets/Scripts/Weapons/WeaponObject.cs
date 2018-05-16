@@ -4,44 +4,55 @@ using UnityEngine.Networking;
 public class WeaponObject : NetworkBehaviour {
 
     // How many rounds per minute does the weapon fire?
-    public float FireRate = 500;
+    [SyncVar] public float FireRate = 500;
     // How many bullets does the weapon fire per trigger-pull?
     // 0 = fully auto, 1 = semi auto, 2 = 2 round burst etc
-    public int Burst = 0;
-    public bool CompleteBurst = false;
-    public int AmmoCapacity = 30;
-    public int ReserveAmmo = 90;
-    public float ReloadTime = 2f;
-    public int AmmoAmount = 0;
-    public float SwayWeight = 25f;
-    public float Recoil = 2f;
-    public float SpeedMul = 1f;
+    [SyncVar] public int Burst = 0;
+    [SyncVar] public bool CompleteBurst = false;
+    [SyncVar] public int AmmoCapacity = 30;
+    [SyncVar] public int ReserveAmmo = 90;
+    [SyncVar] public float ReloadTime = 2f;
+    [SyncVar] public int AmmoAmount = 0;
+    [SyncVar] public float SwayWeight = 25f;
+    [SyncVar] public float Recoil = 2f;
+    [SyncVar] public float SpeedMul = 1f;
 
     public Vector3 Offset = new Vector3(0, 0, 0);
-    public GameObject ProjectileType;
-    public GameObject PickupObject;
-    public GameObject Owner;
+    [SyncVar] public GameObject ProjectileType;
+    [SyncVar] public GameObject PickupObject;
+    [SyncVar] public GameObject Owner;
     public GameObject Muzzle;
     public WeaponBase WeaponBase;
     public Attributes Attributes;
 
-    void Start() {
+    public override void OnStartServer() {
         AmmoAmount = AmmoCapacity;
     }
 
-    public void SetOwner(GameObject NewOwner) {
+    public void SetOwner(GameObject NewOwner, NetworkInstanceId NetID) {
         Owner = NewOwner;
-        WeaponBase = Owner.GetComponent<WeaponBase>();
-        this.Deactivate();
+        CmdDeactivate();
 
-        transform.SetParent(WeaponBase.WeaponParent.transform);
-        transform.localPosition = Offset;
+        RpcSetOwner(NetID);
     }
 
+    [ClientRpc]
+    public void RpcSetOwner (NetworkInstanceId NetID) {
+        Owner = ClientScene.FindLocalObject(NetID);
+        transform.SetParent(Owner.GetComponent<WeaponBase>().WeaponParent.transform);
+        transform.localPosition = Offset;
+
+        int WeaponCount = Owner.GetComponent<WeaponBase>().WeaponParent.transform.childCount;
+
+
+        if (WeaponCount == 1) {
+            WeaponBase = Owner.GetComponent<WeaponBase>();
+            WeaponBase.CmdSetWeapon(0);
+        }
+    }
 
     public void Activate() {
-
-        this.gameObject.SetActive(true);
+        gameObject.SetActive(true);
 
         WeaponBase = Owner.GetComponent<WeaponBase>();
         WeaponBase.FireRate = FireRate;
@@ -49,13 +60,13 @@ public class WeaponObject : NetworkBehaviour {
         WeaponBase.CompleteBurst = CompleteBurst;
         WeaponBase.ReloadTime = ReloadTime;
         WeaponBase.Recoil = Recoil;
-        WeaponBase.ProjectileType = ProjectileType;
         WeaponBase.FireDelay = 1f / (FireRate / 60);
         WeaponBase.Sway.Weight = SwayWeight;
-        WeaponBase.Muzzle = Muzzle;
+        WeaponBase.WeaponObjectNetID = netId;
     }
 
-    public void Deactivate() {
-        this.gameObject.SetActive(false);
+    [Command]
+    public void CmdDeactivate() {
+        gameObject.SetActive(false);
     }
 }

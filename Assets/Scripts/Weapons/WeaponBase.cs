@@ -4,21 +4,24 @@ using UnityEngine.Networking;
 public class WeaponBase : NetworkBehaviour {
 
     // How many rounds per minute does the weapon fire?
-    public float FireRate = 500;
+    [SyncVar] public float FireRate = 500;
     // How many bullets does the weapon fire per trigger-pull?
     // 0 = fully auto, 1 = semi auto, 2 = 2 round burst etc
-    public int Burst = 0;
-    public bool CompleteBurst = false;
-    public float ReloadTime = 2f;
-    public float Recoil = 2f;
+    [SyncVar] public int Burst = 0;
+    [SyncVar] public bool CompleteBurst = false;
+    [SyncVar] public float ReloadTime = 2f;
+    [SyncVar] public float Recoil = 2f;
 
     public GameObject ProjectileType;
-    public GameObject WeaponParent;
-    public GameObject WeaponObject;
-    public GameObject CameraObject;
+    [SyncVar] public GameObject WeaponParent;
+    [SyncVar] public GameObject WeaponObject;
+    [SyncVar] public GameObject CameraObject;
     public GameObject Muzzle;
 
-    public int SelectedWeaponID = 0;
+    [SyncVar] public NetworkInstanceId WeaponParentNetID;
+    [SyncVar] public NetworkInstanceId WeaponObjectNetID;
+
+    [SyncVar] public int SelectedWeaponID = 0;
 
     CharacterMovement charmove;
     public WeaponSway Sway;
@@ -33,7 +36,11 @@ public class WeaponBase : NetworkBehaviour {
         charmove = transform.GetComponent<CharacterMovement>();
         Sway = transform.GetComponent<WeaponSway>();
 
-        SetWeapon(0);
+        CmdSetWeapon(0);
+    }
+
+    public override void OnStartServer() {
+        WeaponParentNetID = this.netId;
     }
 
     void Reset() {
@@ -109,7 +116,7 @@ public class WeaponBase : NetworkBehaviour {
                 SelectedWeaponID = 0;
             }
 
-            SetWeapon(SelectedWeaponID);
+            CmdSetWeapon(SelectedWeaponID);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !IsFiring && WeaponParent.transform.childCount > 1) {
             SelectedWeaponID--;
@@ -118,20 +125,28 @@ public class WeaponBase : NetworkBehaviour {
                 SelectedWeaponID = WeaponParent.transform.childCount - 1;
             }
 
-            SetWeapon(SelectedWeaponID);
+            CmdSetWeapon(SelectedWeaponID);
         }
     }
 
-    public void SetWeapon(int ID) {
+    [ClientRpc]
+    public void RpcSetWeapon (int ID) {
+        CmdSetWeapon(ID);
+    }
+
+    [Command]
+    public void CmdSetWeapon(int ID) {
         int i = 0;
         foreach (Transform Weapon in WeaponParent.transform) {
             if (i == ID) {
                 Weapon.GetComponent<WeaponObject>().Activate();
                 WeaponObject = Weapon.gameObject;
                 Sway.WeaponObject = Weapon.gameObject;
+                Muzzle = WeaponObject.GetComponent<WeaponObject>().Muzzle;
+                ProjectileType = WeaponObject.GetComponent<WeaponObject>().ProjectileType;
             }
             else {
-                Weapon.GetComponent<WeaponObject>().Deactivate();
+                Weapon.GetComponent<WeaponObject>().CmdDeactivate();
             }
 
             i++;
