@@ -13,10 +13,6 @@ public class PlayerSetup : NetworkBehaviour {
             foreach (Behaviour Component in ComponentsToDisable) {
                 if (Component) {
                     Component.enabled = false;
-
-                    if (Component.GetComponent<Camera>()) {
-                        Component.GetComponent<Camera>().enabled = false;
-                    }
                 }
             }
         }
@@ -32,7 +28,9 @@ public class PlayerSetup : NetworkBehaviour {
     }
 
     void OnDisable() {
-        // Enable the scene camera when disconnected
-        SceneCamera.SetActive(true);
+        if (SceneCamera) {
+            // Enable the scene camera when disconnected
+            SceneCamera.SetActive(true);
+        }
     }
 }

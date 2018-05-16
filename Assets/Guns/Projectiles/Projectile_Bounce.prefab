@@ -38,6 +38,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4204561928911328}
   - component: {fileID: 114510465817451228}
+  - component: {fileID: 114740974080283960}
+  - component: {fileID: 114109604269240466}
   m_Layer: 10
   m_Name: Projectile_Bounce
   m_TagString: Untagged
@@ -206,6 +208,27 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114109604269240466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1721784841153406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.05
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 100
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114510465817451228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,3 +247,35 @@ MonoBehaviour:
   Lifetime: 5
   Velocity: 100
   Damage: 15
+--- !u!114 &114740974080283960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1721784841153406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 77
+    i1: 228
+    i2: 30
+    i3: 99
+    i4: 59
+    i5: 241
+    i6: 170
+    i7: 228
+    i8: 123
+    i9: 72
+    i10: 30
+    i11: 143
+    i12: 9
+    i13: 213
+    i14: 200
+    i15: 109
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

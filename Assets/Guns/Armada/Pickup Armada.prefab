@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 135815286123638352}
   - component: {fileID: 114454411625055696}
   - component: {fileID: 114309299830869582}
+  - component: {fileID: 114938841325043134}
+  - component: {fileID: 114017707982131168}
   m_Layer: 0
   m_Name: Pickup Armada
   m_TagString: Untagged
@@ -149,8 +151,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1045834575962850}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.511112, y: 1.24, z: 28.495213}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.141113, y: -1.3800001, z: 22.275211}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4257552185136944}
@@ -375,6 +377,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1045834575962850}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114017707982131168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045834575962850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114309299830869582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -399,6 +422,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VisualPart: {fileID: 1557800027771000}
   Weapon: {fileID: 1805592618880986, guid: f3c011012cd6cd043bdd7159ebab0775, type: 2}
+--- !u!114 &114938841325043134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045834575962850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 31
+    i1: 208
+    i2: 221
+    i3: 128
+    i4: 45
+    i5: 233
+    i6: 104
+    i7: 20
+    i8: 200
+    i9: 57
+    i10: 180
+    i11: 120
+    i12: 238
+    i13: 104
+    i14: 3
+    i15: 65
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!135 &135815286123638352
 SphereCollider:
   m_ObjectHideFlags: 1

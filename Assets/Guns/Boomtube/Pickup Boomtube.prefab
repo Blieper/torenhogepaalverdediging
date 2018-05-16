@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 135020057017262238}
   - component: {fileID: 114059171541613382}
   - component: {fileID: 114154590389910866}
+  - component: {fileID: 114423417920546920}
+  - component: {fileID: 114711998651324342}
   m_Layer: 0
   m_Name: Pickup Boomtube
   m_TagString: Untagged
@@ -85,8 +87,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1010337450435330}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.920362, y: 1.56, z: 29.394936}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 19.550362, y: -1.06, z: 23.174934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4840548987713402}
@@ -253,6 +255,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855d408622650d84a8257b282c8ddf20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114423417920546920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010337450435330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 244
+    i1: 59
+    i2: 160
+    i3: 116
+    i4: 52
+    i5: 129
+    i6: 182
+    i7: 100
+    i8: 11
+    i9: 162
+    i10: 36
+    i11: 58
+    i12: 96
+    i13: 252
+    i14: 135
+    i15: 183
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114711998651324342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010337450435330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!135 &135020057017262238
 SphereCollider:
   m_ObjectHideFlags: 1

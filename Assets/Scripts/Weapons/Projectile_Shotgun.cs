@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Networking;
 
 public class Projectile_Shotgun : Projectile {
     public float Spread = 1.0F;
@@ -22,6 +21,7 @@ public class Projectile_Shotgun : Projectile {
                     ));
 
             projectile.GetComponent<Projectile>().Initialise(gameObject, Muzzle, Start);
+            NetworkServer.Spawn(projectile);
         }
     }
 }

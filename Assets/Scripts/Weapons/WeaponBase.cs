@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class WeaponBase : MonoBehaviour {
+public class WeaponBase : NetworkBehaviour {
 
     // How many rounds per minute does the weapon fire?
     public float FireRate = 500;
@@ -51,7 +50,8 @@ public class WeaponBase : MonoBehaviour {
         }
     }
 
-    void Fire() {
+    [Command]
+    void CmdFire() {
         if (!IsFiring) {
             return;
         }
@@ -63,6 +63,8 @@ public class WeaponBase : MonoBehaviour {
 
             GameObject projectile = Instantiate(ProjectileType, CameraObject.transform.position, CameraObject.transform.rotation);
             projectile.GetComponent<Projectile>().Initialise(gameObject, Muzzle.transform.position, CameraObject.transform.position);
+
+            NetworkServer.Spawn(projectile);
         }
 
         CheckBurst();
@@ -83,13 +85,12 @@ public class WeaponBase : MonoBehaviour {
     }
 
     void Update() {
-
         if (Time.time > FireTime && IsFiring) {
-            Fire();
+            CmdFire();
         }
 
         if (Input.GetButtonDown("Fire1") && Time.time > FireTime && WeaponObject) {
-            Fire();
+            CmdFire();
             IsFiring = true;
         }
 

@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class WeaponObject : MonoBehaviour {
+public class WeaponObject : NetworkBehaviour {
 
     // How many rounds per minute does the weapon fire?
     public float FireRate = 500;
@@ -34,9 +33,11 @@ public class WeaponObject : MonoBehaviour {
         Owner = NewOwner;
         WeaponBase = Owner.GetComponent<WeaponBase>();
         this.Deactivate();
-        this.transform.SetParent(WeaponBase.WeaponParent.transform);
-        this.transform.localPosition = Offset;
+
+        transform.SetParent(WeaponBase.WeaponParent.transform);
+        transform.localPosition = Offset;
     }
+
 
     public void Activate() {
 

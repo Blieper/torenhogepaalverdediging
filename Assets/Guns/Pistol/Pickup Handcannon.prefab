@@ -72,6 +72,8 @@ GameObject:
   - component: {fileID: 135938525324229518}
   - component: {fileID: 114943470564295122}
   - component: {fileID: 114089158461085934}
+  - component: {fileID: 114236828803428018}
+  - component: {fileID: 114574591074114554}
   m_Layer: 0
   m_Name: Pickup Handcannon
   m_TagString: Untagged
@@ -102,8 +104,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578583686031572}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.69761, y: 1.44, z: 27.28116}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 23.32761, y: -1.1799998, z: 21.06116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4281493932894472}
@@ -313,6 +315,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855d408622650d84a8257b282c8ddf20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114236828803428018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1578583686031572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 189
+    i1: 87
+    i2: 133
+    i3: 194
+    i4: 97
+    i5: 147
+    i6: 182
+    i7: 116
+    i8: 187
+    i9: 251
+    i10: 136
+    i11: 140
+    i12: 197
+    i13: 122
+    i14: 70
+    i15: 121
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114574591074114554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1578583686031572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114943470564295122
 MonoBehaviour:
   m_ObjectHideFlags: 1

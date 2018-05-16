@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4188964726047294}
   - component: {fileID: 114426128226854194}
+  - component: {fileID: 114158650128258114}
   m_Layer: 9
   m_Name: Decimator
   m_TagString: Untagged
@@ -219,6 +220,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1659632396234286}
   m_Mesh: {fileID: 4300000, guid: c381bd8be88c8704db6afe3cea941c70, type: 3}
+--- !u!114 &114158650128258114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660066096475654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 13
+    i1: 185
+    i2: 168
+    i3: 195
+    i4: 0
+    i5: 150
+    i6: 93
+    i7: 20
+    i8: 88
+    i9: 188
+    i10: 9
+    i11: 48
+    i12: 165
+    i13: 95
+    i14: 152
+    i15: 243
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114426128226854194
 MonoBehaviour:
   m_ObjectHideFlags: 1

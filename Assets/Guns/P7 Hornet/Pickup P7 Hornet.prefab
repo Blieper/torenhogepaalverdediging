@@ -72,6 +72,8 @@ GameObject:
   - component: {fileID: 135954106790207702}
   - component: {fileID: 114642253522402028}
   - component: {fileID: 114957932592059448}
+  - component: {fileID: 114060010693626112}
+  - component: {fileID: 114083099195215284}
   m_Layer: 0
   m_Name: Pickup P7 Hornet
   m_TagString: Untagged
@@ -113,8 +115,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752388698659958}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.06648, y: 1.23, z: 29.685055}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 21.69648, y: -1.3899999, z: 23.465054}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4112220794730874}
@@ -231,6 +233,59 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358403533509156}
   m_Mesh: {fileID: 4300002, guid: f74b45622e1f19d40a5807de2d2ee1dd, type: 3}
+--- !u!114 &114060010693626112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752388698659958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 65
+    i1: 57
+    i2: 17
+    i3: 62
+    i4: 27
+    i5: 163
+    i6: 5
+    i7: 20
+    i8: 249
+    i9: 235
+    i10: 160
+    i11: 135
+    i12: 133
+    i13: 108
+    i14: 206
+    i15: 182
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114083099195215284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752388698659958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114642253522402028
 MonoBehaviour:
   m_ObjectHideFlags: 1

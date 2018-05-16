@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4370892038620616}
   - component: {fileID: 114631682277602248}
+  - component: {fileID: 114591436956989792}
   m_Layer: 9
   m_Name: hand cannon
   m_TagString: Untagged
@@ -292,6 +293,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357321044081354}
   m_Mesh: {fileID: 4300004, guid: b8f30ad802db28c4b96bcadb7567fe45, type: 3}
+--- !u!114 &114591436956989792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108140207031714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 170
+    i1: 192
+    i2: 10
+    i3: 156
+    i4: 128
+    i5: 82
+    i6: 189
+    i7: 68
+    i8: 120
+    i9: 44
+    i10: 232
+    i11: 28
+    i12: 68
+    i13: 190
+    i14: 31
+    i15: 42
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114631682277602248
 MonoBehaviour:
   m_ObjectHideFlags: 1

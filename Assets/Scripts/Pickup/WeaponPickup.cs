@@ -31,11 +31,12 @@ public class WeaponPickup : Pickup {
                     weaponBase.WeaponParent.transform.position,
                     weaponBase.WeaponParent.transform.rotation);
 
-                CreatedWeapon.GetComponent<WeaponObject>().SetOwner(Object);
+                NetworkServer.Spawn(CreatedWeapon);
+                NetworkServer.Destroy(gameObject);
 
-                GameObject.Destroy(gameObject);
-            } 
-            
+                CreatedWeapon.GetComponent<WeaponObject>().SetOwner(Object);
+            }
+
             if (WeaponCount == 0)
             {
                 weaponBase.SetWeapon(0);
@@ -48,20 +49,21 @@ public class WeaponPickup : Pickup {
                     weaponBase.WeaponObject.GetComponent<WeaponObject>().PickupObject,
                     transform.position,
                     transform.rotation);
-                
-                GameObject.Destroy(weaponBase.WeaponObject);
+
+                NetworkServer.Spawn(NewPickup);
+                NetworkServer.Destroy(weaponBase.WeaponObject);
 
                 var CreatedWeapon = Instantiate(
                     Weapon,
                     weaponBase.WeaponParent.transform.position,
                     weaponBase.WeaponParent.transform.rotation);
 
-                CreatedWeapon.GetComponent<WeaponObject>().SetOwner(Object);
+                NetworkServer.Spawn(CreatedWeapon);
+                NetworkServer.Destroy(gameObject);
 
+                CreatedWeapon.GetComponent<WeaponObject>().SetOwner(Object);
                 CreatedWeapon.transform.SetSiblingIndex(index);
                 weaponBase.SetWeapon(index);
-
-                GameObject.Destroy(gameObject);
             }
         }
     }

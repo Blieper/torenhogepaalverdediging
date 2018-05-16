@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class Pickup : MonoBehaviour
+public class Pickup : NetworkBehaviour
 {
 
     public GameObject VisualPart;
@@ -26,6 +25,9 @@ public class Pickup : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
+        if (!isServer)
+            return;
+
         OnPickup(collider.gameObject);
     }
 }

@@ -69,6 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4695322482534940}
   - component: {fileID: 114320909847452916}
+  - component: {fileID: 114795809022210096}
   m_Layer: 9
   m_Name: P7 Hornet
   m_TagString: Untagged
@@ -251,3 +252,35 @@ MonoBehaviour:
   Muzzle: {fileID: 1247385555485858}
   WeaponBase: {fileID: 0}
   Attributes: {fileID: 0}
+--- !u!114 &114795809022210096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905464562959928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 73
+    i1: 127
+    i2: 24
+    i3: 140
+    i4: 229
+    i5: 31
+    i6: 247
+    i7: 84
+    i8: 187
+    i9: 146
+    i10: 135
+    i11: 174
+    i12: 180
+    i13: 150
+    i14: 23
+    i15: 54
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

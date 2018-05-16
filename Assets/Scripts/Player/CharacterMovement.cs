@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class CharacterMovement : MonoBehaviour {
+public class CharacterMovement : NetworkBehaviour {
 
     public Camera cam;
     public CharacterController controller;
@@ -44,7 +43,8 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     void Start() {
-        Cursor.lockState = CursorLockMode.Locked;
+        if (!isLocalPlayer)
+            return;
 
         JumpSpeed = Mathf.Sqrt(2 * -Physics.gravity.y * JumpHeight);
 
@@ -52,6 +52,9 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     void Update() {
+        if (!isLocalPlayer)
+            return;
+
         moveVector = Vector3.Normalize(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")));
 
         velocity.x += GetAccelaration(moveVector.x, velocity.x) * Time.deltaTime;
