@@ -22,12 +22,4 @@ public class Pickup : NetworkBehaviour
     {
 
     }
-
-    void OnTriggerEnter(Collider collider)
-    {
-        if (!isServer)
-            return;
-
-        OnPickup(collider.gameObject);
-    }
 }

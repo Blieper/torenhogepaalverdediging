@@ -28,4 +28,10 @@ public class Interact : MonoBehaviour {
             }
         }
 	}
+
+    void OnTriggerEnter(Collider collider) {
+        if (collider.GetComponent<Pickup>()) {
+            collider.GetComponent<Pickup>().OnPickup(collider.gameObject);
+        }
+    }
 }

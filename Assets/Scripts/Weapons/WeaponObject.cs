@@ -18,43 +18,20 @@ public class WeaponObject : NetworkBehaviour {
     [SyncVar] public float SpeedMul = 1f;
 
     public Vector3 Offset = new Vector3(0, 0, 0);
-    [SyncVar] public GameObject ProjectileType;
-    [SyncVar] public GameObject PickupObject;
-    [SyncVar] public GameObject Owner;
+    [SyncVar] public NetworkInstanceId OwnerNetID;
+    public GameObject ProjectileType;
+    public GameObject PickupObject;
     public GameObject Muzzle;
-    public WeaponBase WeaponBase;
     public Attributes Attributes;
 
     public override void OnStartServer() {
         AmmoAmount = AmmoCapacity;
     }
 
-    public void SetOwner(GameObject NewOwner, NetworkInstanceId NetID) {
-        Owner = NewOwner;
-        CmdDeactivate();
-
-        RpcSetOwner(NetID);
-    }
-
-    [ClientRpc]
-    public void RpcSetOwner (NetworkInstanceId NetID) {
-        Owner = ClientScene.FindLocalObject(NetID);
-        transform.SetParent(Owner.GetComponent<WeaponBase>().WeaponParent.transform);
-        transform.localPosition = Offset;
-
-        int WeaponCount = Owner.GetComponent<WeaponBase>().WeaponParent.transform.childCount;
-
-
-        if (WeaponCount == 1) {
-            WeaponBase = Owner.GetComponent<WeaponBase>();
-            WeaponBase.CmdSetWeapon(0);
-        }
-    }
-
     public void Activate() {
         gameObject.SetActive(true);
 
-        WeaponBase = Owner.GetComponent<WeaponBase>();
+        WeaponBase WeaponBase = NetworkServer.FindLocalObject(OwnerNetID).GetComponent<WeaponBase>();
         WeaponBase.FireRate = FireRate;
         WeaponBase.Burst = Burst;
         WeaponBase.CompleteBurst = CompleteBurst;
@@ -62,11 +39,12 @@ public class WeaponObject : NetworkBehaviour {
         WeaponBase.Recoil = Recoil;
         WeaponBase.FireDelay = 1f / (FireRate / 60);
         WeaponBase.Sway.Weight = SwayWeight;
-        WeaponBase.WeaponObjectNetID = netId;
+        WeaponBase.Sway.WeaponObject = WeaponBase.WeaponObject = NetworkServer.FindLocalObject(netId);
+        WeaponBase.Muzzle = Muzzle;
+        WeaponBase.ProjectileType = ProjectileType;
     }
 
-    [Command]
-    public void CmdDeactivate() {
+    public void Deactivate() {
         gameObject.SetActive(false);
     }
 }

@@ -12,14 +12,11 @@ public class WeaponBase : NetworkBehaviour {
     [SyncVar] public float ReloadTime = 2f;
     [SyncVar] public float Recoil = 2f;
 
-    public GameObject ProjectileType;
+    [SyncVar] public GameObject ProjectileType;
     [SyncVar] public GameObject WeaponParent;
     [SyncVar] public GameObject WeaponObject;
     [SyncVar] public GameObject CameraObject;
-    public GameObject Muzzle;
-
-    [SyncVar] public NetworkInstanceId WeaponParentNetID;
-    [SyncVar] public NetworkInstanceId WeaponObjectNetID;
+    [SyncVar] public GameObject Muzzle;
 
     [SyncVar] public int SelectedWeaponID = 0;
 
@@ -31,7 +28,7 @@ public class WeaponBase : NetworkBehaviour {
     int FiredBurst;
     bool IsFiring = false;
 
-    void Start() {
+    public void OnStartServer() {
         FireDelay = 1f / (FireRate / 60);
         charmove = transform.GetComponent<CharacterMovement>();
         Sway = transform.GetComponent<WeaponSway>();
@@ -39,9 +36,6 @@ public class WeaponBase : NetworkBehaviour {
         CmdSetWeapon(0);
     }
 
-    public override void OnStartServer() {
-        WeaponParentNetID = this.netId;
-    }
 
     void Reset() {
         IsFiring = false;
@@ -129,24 +123,15 @@ public class WeaponBase : NetworkBehaviour {
         }
     }
 
-    [ClientRpc]
-    public void RpcSetWeapon (int ID) {
-        CmdSetWeapon(ID);
-    }
-
     [Command]
     public void CmdSetWeapon(int ID) {
         int i = 0;
         foreach (Transform Weapon in WeaponParent.transform) {
             if (i == ID) {
                 Weapon.GetComponent<WeaponObject>().Activate();
-                WeaponObject = Weapon.gameObject;
-                Sway.WeaponObject = Weapon.gameObject;
-                Muzzle = WeaponObject.GetComponent<WeaponObject>().Muzzle;
-                ProjectileType = WeaponObject.GetComponent<WeaponObject>().ProjectileType;
             }
             else {
-                Weapon.GetComponent<WeaponObject>().CmdDeactivate();
+                Weapon.GetComponent<WeaponObject>().Deactivate();
             }
 
             i++;

@@ -351,7 +351,5 @@ MonoBehaviour:
     type: 2}
   PickupObject: {fileID: 1578583686031572, guid: bd5785c26193b674bbfb888cc57a4679,
     type: 2}
-  Owner: {fileID: 0}
   Muzzle: {fileID: 1560692950984032}
-  WeaponBase: {fileID: 0}
   Attributes: {fileID: 0}

@@ -31,10 +31,10 @@ public class WeaponPickup : Pickup {
                     weaponBase.WeaponParent.transform.position,
                     weaponBase.WeaponParent.transform.rotation);
 
+                CreatedWeapon.GetComponent<WeaponObject>().OwnerNetID = weaponBase.netId;
+
                 NetworkServer.Spawn(CreatedWeapon);
                 NetworkServer.Destroy(gameObject);
-
-                CreatedWeapon.GetComponent<WeaponObject>().SetOwner(Object, weaponBase.WeaponParentNetID);
             }
 
             if (WeaponCount == 3 && Interacted) {
@@ -56,9 +56,8 @@ public class WeaponPickup : Pickup {
                 NetworkServer.Spawn(CreatedWeapon);
                 NetworkServer.Destroy(gameObject);
 
-                CreatedWeapon.GetComponent<WeaponObject>().SetOwner(Object, weaponBase.WeaponParentNetID);
                 CreatedWeapon.transform.SetSiblingIndex(index);
-                weaponBase.RpcSetWeapon(index);
+                //weaponBase.RpcSetWeapon(index);
             }
         }
     }
